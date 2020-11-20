@@ -1,0 +1,23 @@
+{
+  "name": "based-knowledge",
+  "version": "1.0.0",
+  "description": "前端知识炼金术集锦",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zhenyulei/based-knowledge.git"
+  },
+  "author": "zhenyulei",
+  "devDependencies": {
+    "vuepress": "^1.7.1"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zhenyulei/based-knowledge/issues"
+  },
+  "homepage": "https://github.com/zhenyulei/based-knowledge#readme"
+}
