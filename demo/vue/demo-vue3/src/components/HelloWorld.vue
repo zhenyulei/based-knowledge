@@ -1,7 +1,7 @@
 <template>
   <h1>{{ msg }}</h1>
   <button @click="count++">count is: {{ count }}</button>
-  <p>Edit <code>components/HelloWorld.vue</code> to test hot module replacement.</p>
+  <button v-bind:disabled="isButtonDisabled">按钮</button>
 </template>
 
 <script>
@@ -12,7 +12,8 @@ export default {
   },
   data() {
     return {
-      count: 0
+      count: 0,
+      isButtonDisabled:true
     }
   }
 }

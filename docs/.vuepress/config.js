@@ -19,14 +19,14 @@ module.exports = {
             {text:'vuepress',link:'https://www.vuepress.cn/'},
             {text:'github',link:'https://github.com/zhenyulei/based-knowledge.git'},
         ],
-        sidebarDepth: 0,
         smoothScroll: true,
         sidebar: {
             '/pages/vue/':[
                 {
                     title:'Vue',
                     children:[
-                        '',
+                        ['','配置环境'],
+                        ['vueBased','基础知识']
                     ]
                 }
             ],
