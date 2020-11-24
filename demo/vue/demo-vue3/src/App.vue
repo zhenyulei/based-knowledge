@@ -1,15 +1,20 @@
 <template>
-  <img alt="Vue logo" src="./assets/logo.png" />
-  <HelloWorld msg="Hello Vue 3.0 + Vite" />
+    <div class="wraper">
+      <button @click="changeBtn()">点击me</button>
+    </div>
 </template>
-
 <script>
-import HelloWorld from './components/HelloWorld.vue'
-
+import {ref} from 'vue'
 export default {
-  name: 'App',
-  components: {
-    HelloWorld
+  data(){
+    return{
+     counter:0,
+    }
+  },
+  methods:{
+    changeBtn(){
+      alert(222);
+    }
   }
 }
 </script>

@@ -1,5 +1,19 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import './index.css'
+const app = createApp(App)
 
-createApp(App).mount('#app')
+
+app.component('button-counter', {
+    data() {
+      return {
+        count: 0
+      }
+    },
+    template: `
+      <button v-on:click="count++">
+        You clicked me {{ count }} times.
+      </button>`
+  })
+
+  
+app.mount('#app')

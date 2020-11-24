@@ -15,7 +15,6 @@ module.exports = {
     themeConfig:{
         nav:[
             {text:'Home',link:'/'},
-            {text:'目录',link:'/guide/'},
             {text:'vuepress',link:'https://www.vuepress.cn/'},
             {text:'github',link:'https://github.com/zhenyulei/based-knowledge.git'},
         ],

@@ -16,3 +16,6 @@ sidebarDepth: 0
 安装node版本为12.xx，否则低版本node 会导致 build 报错
 :::
 
+vue组件概览
+
+data+生命周期是函数，其他是对象
