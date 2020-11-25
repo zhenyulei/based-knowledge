@@ -25,7 +25,9 @@ module.exports = {
                     title:'Vue',
                     children:[
                         ['','配置环境'],
-                        ['vueBased','基础知识']
+                        ['vueBased','基础知识'],
+                        ['component','组件基础'],
+                        ['vueSlots','插槽slot']
                     ]
                 }
             ],
