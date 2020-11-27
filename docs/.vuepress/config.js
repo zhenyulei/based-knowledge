@@ -27,7 +27,46 @@ module.exports = {
                         ['','配置环境'],
                         ['vueBased','基础知识'],
                         ['component','组件基础'],
-                        ['vueSlots','插槽slot']
+                        ['vueSlots','插槽slot'],
+                        ['vueAdvance','进阶知识'],
+                        ['jsxVue','用jsx开发vue']
+                    ]
+                },
+                {
+                    title:'vue3新特性',
+                    children:[
+                        'setup',
+                        'proxy',
+                        'asyncComponent',
+                        'cssinjs',
+                        'forKey',
+                        'slot',
+                        'model',
+                        'scoped',
+                        'teleport',
+                        'refs',
+                        'global',
+                        'directive',
+                        'render',
+                        'other'
+                    ]
+                },
+                {
+                    title:'TS支持',
+                    children:[
+                        'tsVue',
+                    ]
+                },
+                {
+                    title:'vuex',
+                    children:[
+                        'vuex',
+                    ]
+                },
+                {
+                    title:'vue-router路由',
+                    children:[
+                        'vueRouter',
                     ]
                 }
             ],

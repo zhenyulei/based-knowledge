@@ -1,29 +1,24 @@
 <template>
-  <Child></Child>
-  <button @click="changeData">改变data</button>
+  <div>
+      <h1 title="标题1">{{showMessage[0]}}</h1>
+      <div v-mylight="'yellow'">{{transData}}</div>
+  </div>
 </template>
+
 <script>
-import Child from './components/child.vue'
+import Child3 from "./components/child3.jsx"
+import {getCurrentInstance, onMounted} from 'vue'
 export default {
-  components: {
-    Child
-  },
-  data(){
+  inject:['transData'],//插件中定义的provide
+  setup() {
+    const { ctx } = getCurrentInstance();//vue3中调用全局变量
+    const showMessage = ctx.$translate;//在插件中定义的全局变量$translate
+    // onMounted(()=>{
+    //   console.log(pluginData);
+    // })
     return {
-      name:'初始值'
-    }
-  },
-  provide(){
-    return {
-      initname:"静态文本",//静态文本不可改变
-      myName:this.name,//取值变量，无响应式
-      user:()=>this.name//有响应式
-    }
-  },
-  methods:{
-    changeData(e){
-      this.name = '改变后的data'
-    }
+      showMessage
+    };
   }
-}
+};
 </script>

@@ -303,9 +303,13 @@ export default {
 
 ## 动态组件
 
+`<keep-alive>` 会缓存动态组件，避免重复渲染。
 ```vue
 <template>
-  <component :is="currentTabComponent"></component>
+  <!-- 失活的组件将会被缓存！-->
+  <keep-alive>
+    <component :is="currentTabComponent"></component>
+  </keep-alive>
   <button @click="changeCom">点击切换组件</button>
 </template>
 <script>
@@ -329,6 +333,187 @@ export default {
 }
 </script>
 ```
+## 异步组件
+
+异步组件要求使用 defineAsyncComponent 方法创建
+
+由于 vue3 中函数式组件必须定义为纯函数，异步组件定义时有如下变化：
+
+新的 defineAsyncComponent 助手方法，用于显式地定义异步组件
+
+component 选项重命名为 loader
+
+Loader 函数本身不再接收 resolve 和 reject 参数，且必须返回一个 Promise
+
+父组件 App.vue
+
+```vue
+<template>
+  <div>
+      <button @click="clickMe">点击我</button>
+      <HelloWorld v-if="isShow"></HelloWorld>
+  </div>
+</template>
+<script>
+import { ref, defineAsyncComponent } from "vue";
+export default {
+  name: 'App',
+  components: {
+    HelloWorld: defineAsyncComponent(()=>import('./components/HelloWorld.vue')),
+  },
+  setup(){
+    const isShow = ref(false);
+    function clickMe(){
+      isShow.value = true
+    }
+    return {
+      isShow,
+      clickMe
+    }
+  }
+}
+</script>
+```
+
+父组件：App.vue 在 Vue 3 中，由于函数式组件被定义为纯函数，因此异步组件的定义需要通过将其包装在新的 defineAsyncComponent 助手方法中来显式地定义
+
+:::tip TIP
+注意在 3G 弱网下进行模拟
+:::
+
+```vue
+<template>
+  <div>
+      <button @click="clickMe">点击我</button>
+      <HelloWorld v-if="isShow"></HelloWorld>
+  </div>
+</template>
+<script>
+import { ref, defineAsyncComponent } from "vue";
+import ErrorComponent from './components/ErrorComponent.vue'
+import LoadingComponent from './components/LoadingComponent.vue'
+
+// 待配置的异步组件
+const asyncPageWithOptions = defineAsyncComponent({
+  loader:()=>import('./components/HelloWorld.vue'),
+  delay: 2000, //展示加载时组件,也就是loading组件的延时时间。默认值是 200 (毫秒)
+  timeout: 7000, //如果提供了超时时间且组件加载也超时了，则展示error 组件
+  errorComponent: ErrorComponent,
+  loadingComponent: LoadingComponent
+})
+
+export default {
+  name: 'App',
+  components: {
+    HelloWorld: asyncPageWithOptions,
+  },
+  setup(){
+    const isShow = ref(false);
+    function clickMe(){
+      isShow.value = true
+    }
+    return {
+      isShow,
+      clickMe
+    }
+  }
+}
+</script>
+```
+子组件 HelloWorld.vue：
+
+```vue
+<template>
+  <div>
+    <div class="my-content">我是子组件的内容</div>
+  </div>
+</template>
+<script>
+import {ref,onMounted,nextTick} from 'vue' 
+export default {
+
+}
+</script>
+```
+子组件:LoadingComponent.vue
+
+```vue
+<template>
+  <div>loading...</div>
+</template>
+<script>
+export default {
+    setup(props,cxt){
+        console.log('我是loading组件');
+    }
+}
+</script>
+```
+
+## 异步请求
+在Vue3中，如果data响应式数据是通过异步请求返回的，组件标签的外部必须使用Suspense标签进行嵌套以等待异步方法的结束 => 可以进行页面的加载中的展示。同时也可以进行错误信息的页面处理。
+
+父组件
+```vue
+<template>
+  <div id="app">
+    <div v-if="error">{{ error }}</div>
+    <Suspense v-else>
+      <template #default>
+        <Child />
+      </template>
+      <template #fallback>
+        Loading...
+      </template>
+    </Suspense>
+  </div>
+</template>
+
+<script>
+import Child from "./components/child.vue";
+import { onErrorCaptured, ref } from "vue";
+export default {
+  components: {
+    Child,
+  },
+  setup() {
+    const error = ref(null);
+    onErrorCaptured(e =>{
+      error.value = e;
+      // 不对错误进行拦截
+      return true;
+    });
+    return { error };
+  },
+}
+</script>
+```
+对应子组件
+
+```vue
+<template>
+  <div>
+    <h1>{{ user.name }}</h1>
+    <h1>{{ user.age }}</h1>
+  </div>
+</template>
+<script>
+export default {
+  async setup() {
+    const fetchUser = () => {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve({ name: "Carlo", age: "20" });
+        }, 3000);
+      });
+    };
+    const user = await fetchUser();
+    return { user };//响应式数据都是通过异步获取的
+  },
+}
+</script>
+```
+
 
 ## 提供/注入
 
@@ -380,6 +565,112 @@ export default {
           return this.user()
         }
     }
+}
+</script>
+```
+
+## ref获取元素
+
+方式一：常规方式（类似于vue2的写法，使用this）
+
+父组件：
+
+```vue
+<template>
+  <div id="app">
+    <Child ref="usernameInput"></Child>
+  </div>
+</template>
+<script>
+import Child from "./components/child.vue";
+export default {
+  components:{
+    Child
+  },
+  mounted() {
+    console.log(this.$refs.usernameInput.childData);//获取子组件中的属性
+    this.$refs.usernameInput.focusInput()//执行子组件中的方法
+  }
+}
+</script>
+```
+对应子组件
+
+```vue
+<template>
+  <div>
+    <input type="text" name="myinput"/>
+  </div>
+</template>
+
+<script>
+export default {
+  data(){
+    return {
+      childData:123
+    }
+  },
+  methods: {
+    focusInput() {
+      console.log(11);
+    }
+  },
+}
+</script>
+```
+
+方式二：在组合式 API 中使用 template refs
+
+```vue
+<template>
+  <input type="text" ref="myInput" data-value="input-number"/>
+</template>
+<script>
+import {ref, onMounted} from 'vue'
+export default {
+  setup(){
+    const myInput = ref(null);
+    onMounted(()=>{
+      console.log(myInput.value);
+      myInput.value.focus();
+    })
+    return {
+      myInput
+    }
+  }
+}
+</script>
+```
+对于数组循环的ref,需要手动创建数组
+
+```vue
+<template>
+  <ul>
+    <li 
+      v-for="item in list" 
+      :ref="setItemRef" 
+      :key="item" 
+      :class="item===1?'list-li':''"
+    >{{item}}</li>
+  </ul>
+</template>
+<script>
+import {ref,onMounted} from 'vue'
+export default {
+  setup(){
+    const list = ref([1,2,3,4]);
+    let itemRefs = ref([])
+    const setItemRef = el => {
+      itemRefs.value.push(el)
+    }
+    onMounted(() => {
+      console.log(itemRefs.value)
+    })
+    return {
+      list,
+      setItemRef,
+    }
+  }
 }
 </script>
 ```

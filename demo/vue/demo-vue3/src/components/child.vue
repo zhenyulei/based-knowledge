@@ -1,11 +1,21 @@
 <template>
-  <Child2 />
+    <input type="text" name="myinput" />
+    <button @click="forceUpdate" v-bind="$attrs">点击我</button>
 </template>
+
 <script>
-import Child2 from './child2.vue'
 export default {
-  components: {
-    Child2
-  }
+  data(){
+    return {
+      childData:123
+    }
+  },
+  mounted(){console.log('child1')},
+  updated(){console.log('update2')},
+  methods: {
+    focusInput() {
+      console.log(11);
+    }
+  },
 }
 </script>
