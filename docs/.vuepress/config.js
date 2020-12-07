@@ -18,18 +18,23 @@ module.exports = {
             {text:'vuepress',link:'https://www.vuepress.cn/'},
             {text:'github',link:'https://github.com/zhenyulei/based-knowledge.git'},
         ],
-        smoothScroll: true,
+        smoothScroll: false,
         sidebar: {
             '/pages/vue/':[
                 {
                     title:'Vue',
                     children:[
                         ['','配置环境'],
-                        ['vueBased','基础知识'],
+                        ['vueBased','应用实例'],
+                        ['methodsComputedWatch','方法&计算属性&侦听器'],
+                        ['conditionList','条件&列表渲染&事件处理'],
+                        ['formTable','表单绑定'],
+                        ['styleCss','样式class和style'],
                         ['component','组件基础'],
                         ['vueSlots','插槽slot'],
                         ['vueAdvance','进阶知识'],
-                        ['jsxVue','用jsx开发vue']
+                        ['jsxVue','用jsx开发vue'],
+                        ['links','参考链接']
                     ]
                 },
                 {

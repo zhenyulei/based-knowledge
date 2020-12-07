@@ -1,4 +1,8 @@
-## 相关链接
+---
+sidebarDepth: 0
+---
+
+### 相关链接
 (1)[设置侧边栏文档](https://blog.csdn.net/wq_ocean_/article/details/109220650) 
 
 (2)[Vue3官方文档](https://v3.cn.vuejs.org/)
