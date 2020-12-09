@@ -81,6 +81,7 @@ export default {
     this.$el.appendChild(codepenScript)
   },
 }
+
 </script>
 
 <style lang="scss">

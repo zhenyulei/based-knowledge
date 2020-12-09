@@ -44,6 +44,6 @@ var demo = new Vue({
 
 ## 在线编辑代码方式二：
 
-<common-codepen-snippet title="Handling forms: select" slug="KKpGydL" :preview="false" />
+<common-codepen-snippet title="Handling forms: select" slug="gOwMaPW" :preview="false" />
 
 data+生命周期是函数，其他是对象
