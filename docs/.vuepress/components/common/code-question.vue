@@ -72,7 +72,7 @@ export default {
 .question {
   padding:15px;
   // border:1px solid green;
-  background: #eee;
+  background: #eeeeee80;
   border-radius:10px;
   margin-top:20px;
     ul li{
