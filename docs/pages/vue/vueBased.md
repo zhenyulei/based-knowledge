@@ -80,9 +80,9 @@ vue3兼容了vue2的写法，vue3对响应式的数据如：ref、reactive等方
 
 ## 完整示例
 
-<common-code-js-run slug="fYIKp"></common-code-js-run>
+<common-codepen-snippet title="Handling forms: select" slug="gOwMaPW" :preview="false" />
 
-:::details
+:::details 完整代码
 ```vue
 <template>
     <!--文本插值,支持js单个表达式-->
