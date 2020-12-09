@@ -70,8 +70,9 @@ export default {
 
 <style lang="scss">
 .question {
-  padding:10px;
-  border:1px solid green;
+  padding:15px;
+  // border:1px solid green;
+  background: #eee;
   border-radius:10px;
   margin-top:20px;
     ul li{
