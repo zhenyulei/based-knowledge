@@ -2,13 +2,13 @@
 home: true
 heroImage: /favicon.ico
 features:
-- title: 简练
-  details: 我们的宗旨是：不说废话，直接get知识！
-- title: 易用
-  details: 每一个都配有demo，让你快速了解使用方法。
-- title: 自检
-  details: 每一节都有对应的习题，可以快速检测是否get到本节内容
-footer: 编辑人：移动应用前端组
+  - title: 简练
+    details: 我们的宗旨是：不说废话，直接get知识！
+  - title: 易用
+    details: 每一个都配有demo，让你快速了解使用方法。
+  - title: 自检
+    details: 每一节都有对应的习题，可以快速检测是否get到本节内容
+footer: 编辑人： 真不胖
 ---
 
 ## 文档存在的意义
@@ -23,12 +23,10 @@ footer: 编辑人：移动应用前端组
 
 我们的目的是汇总梳理前端所有知识文档，全面不琐碎，简单又实用的原则，夯实基础，才能更好的起航！
 
-
-
 :::warning 每章节包含内容
 **问题自检** --- 快速判断对于本节内容的熟悉程度，如果你全部答对，恭喜你节省了学习本章的时间。
 
-**精炼知识点** --- 快速get到本节包含的内容，返回看是否能够全面回答 “章节习题” 了呢？
+**精炼知识点** --- 快速 get 到本节包含的内容，返回看是否能够全面回答 “章节习题” 了呢？
 
 **知识点精讲** --- 在这里可以全面了解本章节知识点，每一部分带有相关代码。
 
@@ -39,13 +37,13 @@ footer: 编辑人：移动应用前端组
 
 ## 目录
 
-- [Vue基础知识梳理](/pages/vue/)
-- [React基础知识梳理](/pages/react/)
-- [TypeScript基础知识梳理](/pages/typescript/)
-- [SCSS基础知识梳理](/pages/typescript/)
+- [Vue 基础知识梳理](/pages/vue/)
+- [React 基础知识梳理](/pages/react/)
+- [TypeScript 基础知识梳理](/pages/typescript/)
+- [SCSS 基础知识梳理](/pages/typescript/)
 - [微信小程序基础知识梳理](/pages/miniprogram/)
-- [Node基础知识梳理](/pages/node/)
-- [ES6基础知识梳理](/pages/es6/)
-- [NestJS基础知识梳理](/pages/es6/)
-- [MySql基础知识梳理](/pages/es6/)
-- [Nginx基础知识梳理](/pages/es6/)
+- [Node 基础知识梳理](/pages/node/)
+- [ES6 基础知识梳理](/pages/es6/)
+- [NestJS 基础知识梳理](/pages/es6/)
+- [MySql 基础知识梳理](/pages/es6/)
+- [Nginx 基础知识梳理](/pages/es6/)
