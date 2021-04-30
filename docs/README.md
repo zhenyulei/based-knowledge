@@ -47,3 +47,4 @@ footer: 编辑人： 真不胖
 - [NestJS 基础知识梳理](/pages/es6/)
 - [MySql 基础知识梳理](/pages/es6/)
 - [Nginx 基础知识梳理](/pages/es6/)
+- [把书读薄系列](/pages/readfiles/)
