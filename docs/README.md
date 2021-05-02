@@ -48,3 +48,4 @@ footer: 编辑人： 真不胖
 - [MySql 基础知识梳理](/pages/es6/)
 - [Nginx 基础知识梳理](/pages/es6/)
 - [把书读薄系列](/pages/readfiles/)
+- [基础知识汇总](/pages/interview/)

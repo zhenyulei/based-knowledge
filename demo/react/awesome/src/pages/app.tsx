@@ -26,10 +26,10 @@ import {
   MyDemo20,
   MyDemo21,
 } from "../components/MyDemo";
-
+import { MyTsDemo1 } from "../components/MyTsInReact";
 ReactDOM.render(
   <div className="App">
-    <MyDemo21 />
+    <MyTsDemo1 />
   </div>,
   document.getElementById("app") as HTMLElement
 );

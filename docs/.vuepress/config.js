@@ -78,7 +78,7 @@ module.exports = {
       "/pages/react/": [
         {
           title: "React",
-          children: [""],
+          children: [["", "聊聊 React Hook 容易踩的坑"]],
         },
       ],
       "/pages/miniprogram/": [
@@ -90,13 +90,34 @@ module.exports = {
       "/pages/typescript/": [
         {
           title: "TypeScript",
-          children: [["", "安装"]],
+          children: [
+            ["", "安装TS"],
+            ["tsInReact.md", "TS 在 React 中的应用"],
+          ],
         },
       ],
       "/pages/readfiles/": [
         {
           title: "把书读薄系列",
-          children: [["", "聊聊 React Hook 容易踩的坑"]],
+          children: [],
+        },
+      ],
+      "/pages/interview/": [
+        {
+          title: "基础知识点梳理",
+          children: [["", "从url输入到返回请求的过程"]],
+        },
+        {
+          title: "Vue",
+          children: [["Vue", "vue知识点"]],
+        },
+        {
+          title: "JavaScript",
+          children: [["JavaScript", "JavaScript知识汇总"]],
+        },
+        {
+          title: "React",
+          children: [["React", "React知识汇总"]],
         },
       ],
     },
