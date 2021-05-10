@@ -101,12 +101,6 @@ module.exports = {
           ],
         },
       ],
-      "/pages/readfiles/": [
-        {
-          title: "把书读薄系列",
-          children: [],
-        },
-      ],
       "/pages/network/": [
         {
           title: "网络知识汇总",
@@ -119,19 +113,19 @@ module.exports = {
       "/pages/algorithm/": [
         {
           title: "算法",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/css/": [
         {
           title: "样式布局",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/designMode/": [
         {
           title: "设计模式",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/javascript/": [
@@ -146,44 +140,44 @@ module.exports = {
       "/pages/mysql/": [
         {
           title: "mysql",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/nestjs/": [
         {
           title: "nestjs",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/network/": [
         {
           title: "网络",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/nginx/": [["", "目录"]],
       "/pages/node/": [
         {
           title: "node",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/other/": [
         {
           title: "其他1",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/performance/": [
         {
           title: "性能方面",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/project/": [
         {
           title: "移动端兼容性",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
         {
           title: "监控平台",
@@ -196,31 +190,31 @@ module.exports = {
       "/pages/security/": [
         {
           title: "安全方面",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/typescript/": [
         {
           title: "TS",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/vue/": [
         {
           title: "vue2.0",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/webpack/": [
         {
           title: "webpack",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
       "/pages/browser/": [
         {
           title: "浏览器",
-          children: ["", "目录"],
+          children: [["", "目录"]],
         },
       ],
     },
