@@ -2,4 +2,4 @@
 sidebarDepth: 1
 ---
 
-## vue 知识点
+### nginx 配置

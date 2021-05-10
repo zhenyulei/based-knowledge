@@ -3,7 +3,7 @@ module.exports = {
     lineNumbers: true,
   },
   title: "前端知识集锦",
-  description: "前端炼金术计划",
+  description: "目录",
   head: [
     [
       "link",
@@ -18,6 +18,7 @@ module.exports = {
   themeConfig: {
     nav: [
       { text: "Home", link: "/" },
+      { text: "links", link: "/pages/links" },
       { text: "vuepress", link: "https://www.vuepress.cn/" },
       {
         text: "github",
@@ -26,7 +27,7 @@ module.exports = {
     ],
     smoothScroll: false,
     sidebar: {
-      "/pages/vue/": [
+      "/pages/vueBase/": [
         {
           title: "Vue",
           children: [
@@ -78,7 +79,11 @@ module.exports = {
       "/pages/react/": [
         {
           title: "React",
-          children: [["", "聊聊 React Hook 容易踩的坑"]],
+          children: [
+            ["", "目录"],
+            ["reactHook", "聊聊 React Hook 容易踩的坑"],
+            ["reactLife", "React生命周期"],
+          ],
         },
       ],
       "/pages/miniprogram/": [
@@ -102,22 +107,120 @@ module.exports = {
           children: [],
         },
       ],
-      "/pages/interview/": [
+      "/pages/network/": [
         {
-          title: "基础知识点梳理",
-          children: [["", "从url输入到返回请求的过程"]],
+          title: "网络知识汇总",
+          children: [
+            ["", "目录"],
+            ["inputUrl", "从url输入到返回请求的过程"],
+          ],
+        },
+      ],
+      "/pages/algorithm/": [
+        {
+          title: "算法",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/css/": [
+        {
+          title: "样式布局",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/designMode/": [
+        {
+          title: "设计模式",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/javascript/": [
+        {
+          title: "ES6",
+          children: [
+            ["", "目录"],
+            ["writing", "手写js方法"],
+          ],
+        },
+      ],
+      "/pages/mysql/": [
+        {
+          title: "mysql",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/nestjs/": [
+        {
+          title: "nestjs",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/network/": [
+        {
+          title: "网络",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/nginx/": [["", "目录"]],
+      "/pages/node/": [
+        {
+          title: "node",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/other/": [
+        {
+          title: "其他1",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/performance/": [
+        {
+          title: "性能方面",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/project/": [
+        {
+          title: "移动端兼容性",
+          children: ["", "目录"],
         },
         {
-          title: "Vue",
-          children: [["Vue", "vue知识点"]],
+          title: "监控平台",
+          children: [
+            ["monitor", "监控平台"],
+            ["monitorSdk", "监控平台SDK"],
+          ],
         },
+      ],
+      "/pages/security/": [
         {
-          title: "JavaScript",
-          children: [["JavaScript", "JavaScript知识汇总"]],
+          title: "安全方面",
+          children: ["", "目录"],
         },
+      ],
+      "/pages/typescript/": [
         {
-          title: "React",
-          children: [["React", "React知识汇总"]],
+          title: "TS",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/vue/": [
+        {
+          title: "vue2.0",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/webpack/": [
+        {
+          title: "webpack",
+          children: ["", "目录"],
+        },
+      ],
+      "/pages/browser/": [
+        {
+          title: "浏览器",
+          children: ["", "目录"],
         },
       ],
     },
