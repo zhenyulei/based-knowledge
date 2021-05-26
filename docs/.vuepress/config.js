@@ -146,7 +146,10 @@ module.exports = {
       "/pages/nestjs/": [
         {
           title: "nestjs",
-          children: [["", "目录"]],
+          children: [
+            ["", "目录"],
+            ["based", "nestjs基础知识汇总"],
+          ],
         },
       ],
       "/pages/network/": [
