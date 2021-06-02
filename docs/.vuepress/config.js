@@ -220,6 +220,12 @@ module.exports = {
           children: [["", "目录"]],
         },
       ],
+      "/pages/elasticsearch/": [
+        {
+          title: "elasticsearch搜索",
+          children: [["", "ES知识"]],
+        },
+      ],
     },
   },
 };
