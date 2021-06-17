@@ -211,7 +211,10 @@ module.exports = {
       "/pages/webpack/": [
         {
           title: "webpack",
-          children: [["", "目录"]],
+          children: [
+            ["", "目录"],
+            ["sourceMap", "sourceMap原理解析"],
+          ],
         },
       ],
       "/pages/browser/": [
