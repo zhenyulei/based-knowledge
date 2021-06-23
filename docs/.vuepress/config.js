@@ -119,7 +119,10 @@ module.exports = {
       "/pages/css/": [
         {
           title: "样式布局",
-          children: [["", "目录"]],
+          children: [
+            ["", "目录"],
+            ["cssBased", "css基础知识"],
+          ],
         },
       ],
       "/pages/designMode/": [

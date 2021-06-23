@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box1 {
+            position: relative;
+            background-color: red;
+        }
+
+        .box1:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .box1 .left {
+            width: 100px;
+            float: left;
+            background-color: greenyellow;
+        }
+
+        .box1 .right {
+            height: 20px;
+            background-color: yellow;
+        }
+    </style>
+    <style>
+        /*相对+绝对定位*/
+        .box2 {
+            position: relative;
+            background-color: red;
+            margin-top: 20px;
+        }
+
+        .box2:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .box2 .left {
+            width: 100px;
+            float: left;
+            background-color: greenyellow;
+        }
+
+        .box2 .right {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            height: 20px;
+            background-color: yellow;
+        }
+    </style>
+    <style>
+        /*verticle*/
+        .box3 {
+            background-color: red;
+            margin-top: 20px;
+        }
+
+        .box3:after {
+            content: '';
+            display: block;
+            clear: both;
+        }
+
+        .box3 .left {
+            width: 100px;
+            float: left;
+            background-color: greenyellow;
+        }
+
+        .box3 .right {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            height: 20px;
+            background-color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="box1">
+        <div class="left">左侧左侧区域左侧区域左侧区域左侧区域左左侧区域左侧区域左侧区域左侧区域侧区域左侧区域左侧区域左侧区域左侧区域左侧区域左侧区域区域</div>
+        <div class="right">右侧区域</div>
+    </div>
+    <div class="box2">
+        <div class="left">左侧左侧区域左侧区域左侧区域左侧区域左左侧区域左侧区域左侧区域左侧区域侧区域左侧区域左侧区域左侧区域左侧区域左侧区域左侧区域区域</div>
+        <div class="right">右侧区域右侧区域右侧区域右侧区域</div>
+    </div>
+    <div class="box3">
+        <div class="left">左侧左侧区域左侧区域左侧区域左侧区域左左侧区域左侧区域左侧区域左侧区域侧区域左侧区域左侧区域左侧区域左侧区域左侧区域左侧区域区域</div>
+        <div class="right">右侧区域右侧区域右侧区域右侧区域</div>
+    </div>
+</body>
+
+</html>
