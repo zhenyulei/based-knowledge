@@ -2,6 +2,8 @@
 sidebarDepth: 1
 ---
 
+> Demo 示例:demo/html/cssIndex.html
+
 ### 1、属性选择器
 
 - [attr]：指定属性的元素；

@@ -136,6 +136,7 @@ module.exports = {
           title: "ES6",
           children: [
             ["", "目录"],
+            ["object", "面向对象编程"],
             ["writing", "手写js方法"],
           ],
         },
