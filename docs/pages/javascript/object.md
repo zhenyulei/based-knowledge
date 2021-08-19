@@ -60,7 +60,7 @@ Father.prototype 就是原型，它是一个对象，我们也称它为原型对
 
 ![img](./imgs/class1.jpg)
 
-类似 Star.prototype = {} 给原型重新赋值，此时会丢失构造器，我们需要手动定义构造器，指回构造函数本身
+类似 Star.prototype = {} 给原型重新赋值<b style="color:red">注意不是给原型上添加方法，是重写了原型</b>，此时会丢失构造器，我们需要手动定义构造器，指回构造函数本身
 
 ```js
 //函数对象的 prototype 原型对象的构造函数指向其本身
@@ -112,7 +112,7 @@ Object.create = function(obj) {
 
 ```js
 function _new(/* 构造函数 */ constructor, /* 构造函数参数 */ params) {
-  var args = [].slice.call(arguments); // 将 arguments 对象转为数组
+  var args = [].slice.call(arguments); // 将 arguments 对象[类数组对象]转为数组
   var constructor = args.shift(); // 取出构造函数,此时args变成了去掉constructor的剩余参数
   var context = Object.create(constructor.prototype); // 创建一个空对象，继承构造函数的 prototype 属性context.__proto__ === constructor.prototype
   var result = constructor.apply(context, args); // 以新建对象为this环境，执行构造函数
@@ -199,37 +199,63 @@ console.log(stu1.sing === stu2.sing); //true
 
 ## 5、class 继承
 
-### 5.1 原型链继承
-
 - 属性在构造函数中使用 call
 - 方法在原型上使用 `__proto__` 挂载到父类
 
 ```js
-function Parent(name) {
+function Parent(name, age) {
   this.name = name;
-}
-Parent.prototype.sayName = function() {
-  console.log(this.name);
-};
-
-function Child(name, age) {
-  Parent.call(this, name);
   this.age = age;
 }
-Child.prototype = new Parent();
-var child = new Child("xiaohua", 12);
-child.sayName();
+Parent.prototype.say = function() {
+  console.log(this.name, this.age);
+};
+
+function Child(name, age, address) {
+  Parent.call(this, name, age); //这里继承属性
+  this.address = "shanghai";
+}
+Child.prototype = Object.create(Parent.prototype); //这里继承方法
+Child.prototype.constructor = Child; //由于重写了 prototype 属性，所以这里要重置构造函数
+
+Child.prototype.sayAddress = function() {
+  //这里不要使用剪头函数，以免this指向window
+  console.log(this.address);
+};
+
+let child1 = new Child("xiaohua", 12, "bejing");
+child1.say(); //xiaohua 12
+child1.sayAddress(); //shanghai
 ```
 
-> 根据第 3 节中 new 命令原理，上面`Child.prototype = new Parent()`相当于在返回的 Child.prototype 的`__proto__`链上挂载到 构造函数 Parent 的 prototype；new 中核心使用的也是 `Object.create`,所以使用 `Child.prototype = new Parent()` 等同于 `Child.prototype = Object.create(Parent.prototype);`
+> 根据第 3 节中 new 命令原理，上面`Child.prototype = new Parent()`相当于在返回的 Child.prototype 的`__proto__`链上挂载到 构造函数 Parent 的 prototype；new 中核心使用的也是 `Object.create`,所以使用 `Child.prototype = new Parent()` 等同于 `Child.prototype = Object.create(Parent.prototype);`,但是这里不建议使用 `Child.prototype = new Parent()`,因为 new 一个对象的时候，会执行构造函数，所以会导致重复执行构造函数。
 
-**优点**
+## 6、ES6 继承
 
-父类方法可以复用
+```js
+class Parent {
+  constructor(name, age) {
+    this.name = name;
+    this.age = age;
+  }
+  say = function() {
+    console.log(this.name, this.age);
+  };
+}
+class Child extends Parent {
+  constructor(name, age, address) {
+    super(name, age);
+    this.address = address;
+  }
+  sayAddress = function() {
+    console.log(this.address);
+  };
+}
 
-**缺点**
-
-父类的所有引用属性（info）会被所有子类共享，更改一个子类的引用属性，其他子类也会受影响
+let child1 = new Child("xiaohua", 12, "北京");
+child1.say();
+child1.sayAddress();
+```
 
 ### 相关资料
 

@@ -11,30 +11,17 @@
 <body>
     Demo页
     <script>
-        //父类
-        function Parent(name) {
-            this.name = name;
-            this.info = {
-                name: "name"
+        var a = 20;
+        var obj = {
+            a: 10,
+            c: this.a + 20,
+            fn: function () {
+                return this.a;
             }
         }
-        Parent.prototype.sayInfo = function () {
-            console.log(this.info);
-        };
 
-        //子类
-        function Child(name, age) {
-            Parent.call(this, name);
-            this.age = age;
-        }
-        Child.prototype = new Parent();
-
-        //实例化子类
-        var child1 = new Child("xiaohua", 12);
-        child1.info.name = "xiohua"
-
-        var child2 = new Child("xiaohua", 12);
-        child2.sayInfo()
+        console.log(obj.c);//30
+        console.log(obj.fn());//10
     </script>
 </body>
 

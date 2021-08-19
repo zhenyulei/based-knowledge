@@ -19,6 +19,7 @@ module.exports = {
     nav: [
       { text: "Home", link: "/" },
       { text: "links", link: "/pages/links" },
+      { text: "手写代码", link: "/pages/practice" },
       { text: "vuepress", link: "https://www.vuepress.cn/" },
       {
         text: "github",
@@ -138,6 +139,8 @@ module.exports = {
             ["", "目录"],
             ["object", "面向对象编程"],
             ["writing", "手写js方法"],
+            ["executionContext", "执行上下文"],
+            ["objectChain", "作用域链"],
           ],
         },
       ],
@@ -231,6 +234,12 @@ module.exports = {
         {
           title: "elasticsearch搜索",
           children: [["", "ES知识"]],
+        },
+      ],
+      "/pages/docker": [
+        {
+          title: "docker基础知识",
+          children: [["", "docker基础知识"]],
         },
       ],
     },

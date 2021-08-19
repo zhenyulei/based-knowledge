@@ -1,0 +1,17 @@
+node_modules
+.DS_Store
+dist
+
+.lock-wscript
+
+build/Release
+.dockerignore
+Dockerfile
+*docker-compose*
+
+logs
+*.log
+
+.idea
+.vscode
+.git
