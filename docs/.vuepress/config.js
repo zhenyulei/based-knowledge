@@ -243,6 +243,12 @@ module.exports = {
           children: [["", "docker基础知识"]],
         },
       ],
+      "/pages/server": [
+        {
+          title: "server相关知识",
+          children: [["", "server基础知识"]],
+        },
+      ],
     },
   },
 };
