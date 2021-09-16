@@ -69,8 +69,8 @@ sidebarDepth: 1
 使用`docker pull xiaozhumaopao/hello:1.0`就可以拉取远端的镜像了【注意更改的阿里云镜像和官网有 10 分钟的延迟】
 如果设置了私有的镜像，就要先登陆 docker
 
-`dockker logs id`或者`dockker logs name` 使用 -f 命令 可以一直打印日志
-`dockker inspect`可以查看容器的初始化信息
+`docker logs id`或者`docker logs name` 使用 -f 命令 可以一直打印日志
+`docker inspect`可以查看容器的初始化信息
 `docker info`
 
 ### 制作 docker 镜像
@@ -126,7 +126,7 @@ CMD ["node","src/index.js"]
 
 #### .dockerignore
 
-```.dockerignore
+```
 node_modules
 .DS_Store
 dist
@@ -164,7 +164,7 @@ https://docs.docker.com/compose/install/
 
 常见示例：
 
-```docker-compose.yml
+```yml
 version: '3'
 services:
   mysql:
@@ -250,7 +250,7 @@ links: https://docs.docker.com/network/links/
 
 （3）在任意一个地方新建 docker-compose.yml 文件，执行`docker-compose up -d`,然后访问 `http://localhost:8080/`即可；
 
-```docker-compose.yml
+```yml
 version: "3"
 services:
   web:

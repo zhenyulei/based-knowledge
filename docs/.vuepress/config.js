@@ -237,13 +237,13 @@ module.exports = {
           children: [["", "ES知识"]],
         },
       ],
-      "/pages/docker": [
+      "/pages/docker/": [
         {
           title: "docker基础知识",
           children: [["", "docker基础知识"]],
         },
       ],
-      "/pages/server": [
+      "/pages/server/": [
         {
           title: "server相关知识",
           children: [["", "server基础知识"]],
