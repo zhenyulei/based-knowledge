@@ -276,3 +276,28 @@ services:
       MONGO_INITDB_ROOT_USERNAME: root
       MONGO_INITDB_ROOT_PASSWORD: example
 ```
+
+### docker 构建镜像
+
+#### 删除当前所有容器
+
+一个镜像可以构建多个容器，容器=镜像+读写层，容器是在镜像的基础上实例化出来的；
+首先删除当前机器上所有的容器和镜像；
+删除容器：
+`docker ps -a` 查看当前所有 docker 容器
+`docker stop $(docker ps -aq)`停止所有容器
+`docker rm $(docker ps -aq)` 删除所有容器
+
+删除镜像：
+`docker images`可以查看当前的镜像
+`docker rmi $(docker images -q)`删除全部 image
+
+> 解决删除镜像时 image is referenced in multiple repositories
+> 答：`docker rmi 镜像name:1.0`
+
+/Users/zhenyulei/Documents/JD/2021/watcher/imge-demo
+
+docker run -it -d -p 8080:80 --name datahttpd -v /Users/zhenyulei/Documents/JD/2021/watcher/imge-demo/:/usr/local/apache2/htdocs/ httpd
+docker run -itd --name datahttpd -p 4000:80 httpd
+
+docker run -it a2736b48821c /bin/bash
