@@ -117,6 +117,28 @@ const MyTsDemo1 = () => {
 export default MyTsDemo1;
 ```
 
+### React 组件 Props
+
+```jsx
+/* React 组件 Props */
+interface Props {
+  disabled?: boolean;
+  style?: React.CSSProperties;
+  children?: React.ReactNode;
+  onClick?: () => void;
+}
+//props的解构赋值
+const Button = ({ onClick, disabled, children, style }: Props) => {
+  return (
+    <button onClick={onClick} disabled={disabled} style={style}>
+      {children}
+    </button>
+  );
+};
+
+export default Button;
+```
+
 ### 参考链接
 
 - [TypeScript 备忘录：如何在 React 中完美运用？](https://juejin.cn/post/6910863689260204039#heading-7)
