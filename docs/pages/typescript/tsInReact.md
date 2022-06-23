@@ -57,6 +57,24 @@ const animalsInfo: IPets = {
 };
 ```
 
+### 属性名不确定的对象
+
+```jsx
+/* 属性名不确定的对象 */
+export type Paths = {
+  [key: string]: string,
+};
+
+// 等同于
+// export type Paths = Record<string, string>;
+
+const paths: Paths = {};
+
+paths.home = "/home"; //OK
+paths.settings = "/settings"; //OK
+paths.somePath = "/somePath"; //OK
+```
+
 ### React.FC 的使用
 
 - 1、React.FC 是函数式组件，等同于 React.FunctionComponent：
@@ -137,6 +155,83 @@ const Button = ({ onClick, disabled, children, style }: Props) => {
 };
 
 export default Button;
+```
+
+### 类型判断
+
+```jsx
+export function printId(id: string | number) {
+  if (typeof id === "string") {
+    console.log(id.toUpperCase());
+  } else {
+    console.log(id);
+  }
+}
+
+printId(101); // OK
+printId("202"); // OK
+```
+
+### 部分对象 Partial
+
+```js
+
+
+/* 部分对象 Partial */
+
+interface User {
+  name: string;
+  age: number;
+  occupation: string;
+}
+
+export const users: User[] = [
+  {
+    name: "Max Mustermann",
+    age: 25,
+    occupation: "Chimney sweep"
+  },
+  {
+    name: "Wilson",
+    age: 23,
+    occupation: "Ball"
+  }
+];
+
+type Criteria = {
+  [Property in keyof User]?: User[Property];
+};
+
+// 等同于
+// type Criteria = Partial<User>;
+```
+
+### 对象类型的修改:Omit
+
+```js
+/* 对象类型的修改 */
+/* extends可以继承对象类型，但不可与原类型冲突，此时可以先使用 Omit 去除需要修改的属性 */
+
+export interface TreeNode {
+  id: number;
+  value: number;
+  children?: TreeNode[];
+}
+
+// 1. 去除 TreeNode 的 id 属性同时修改 children 属性的类型
+export interface NodeWithoutId extends Omit<TreeNode, "id" | "children"> {
+  children?: NodeWithoutId[];
+}
+
+// OK
+const nodeWithoutId: NodeWithoutId = {
+  value: 1,
+  children: [
+    {
+      value: 2,
+    },
+  ],
+};
 ```
 
 ### 参考链接

@@ -2,6 +2,7 @@ module.exports = {
   markdown: {
     lineNumbers: true,
   },
+  base: "/",
   title: "前端知识集锦",
   description: "目录",
   head: [
