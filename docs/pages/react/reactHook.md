@@ -982,6 +982,147 @@ export default MyDemo21;
 
 好了，洋洋洒洒通过了 20+个示例，介绍了 React Hook 在日常开发中要注意的一些问题和遇到过的坑，夯实了基础，相信遇见类似的问题不再一头雾水。然而整个 React Hook 知识体系庞大，后面我们仍需要总结学习，以上权当抛砖引玉，欢迎各位小伙伴留言讨论。
 
+> 2022 年 6 月 23 日更新
+
+### 每次渲染都是独立的闭包
+
+- 每一次渲染都有它自己的 Props 和 State
+- 每一次渲染都有它自己的事件处理函数
+- 当点击更新状态的时候，函数组件都会重新被调用，那么每次渲染都是独立的，取到的值不会受后面操作的影响
+
+```jsx
+function Counter2() {
+  let [number, setNumber] = useState(0);
+  function alertNumber() {
+    setTimeout(() => {
+      // alert 只能获取到点击按钮时的那个状态
+      alert(number);
+    }, 3000);
+  }
+  return (
+    <>
+      <p>{number}</p>
+      <button onClick={() => setNumber(number + 1)}>+</button>
+      <button onClick={alertNumber}>alertNumber</button>
+    </>
+  );
+}
+```
+
+### 惰性初始化 state
+
+- initialState 参数只会在组件的初始化渲染中起作用，后续渲染时会被忽略
+- 如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用
+
+```jsx
+function Counter5(props) {
+  console.log("Counter5 render");
+  // 这个函数只在初始渲染时执行一次，后续更新状态重新渲染组件时，该函数就不会再被调用
+  function getInitState() {
+    return { number: props.number };
+  }
+  let [counter, setCounter] = useState(getInitState);
+  return (
+    <>
+      <p>{counter.number}</p>
+      <button onClick={() => setCounter({ number: counter.number + 1 })}>
+        +
+      </button>
+      <button onClick={() => setCounter(counter)}>setCounter</button>
+    </>
+  );
+}
+```
+
+### 使用多个 Effect 实现关注点分离
+
+Hook 允许我们按照代码的用途分离他们， 而不是像生命周期函数那样。React 将按照 effect 声明的顺序依次调用组件中的 每一个 effect。
+
+```jsx
+function FriendStatusWithCounter(props) {
+  //功能一
+  const [count, setCount] = useState(0);
+  useEffect(() => {
+    document.title = `You clicked ${count} times`;
+  });
+  //功能二
+  const [isOnline, setIsOnline] = useState(null);
+  useEffect(() => {
+    function handleStatusChange(status) {
+      setIsOnline(status.isOnline);
+    }
+
+    ChatAPI.subscribeToFriendStatus(props.friend.id, handleStatusChange);
+    return () => {
+      ChatAPI.unsubscribeFromFriendStatus(props.friend.id, handleStatusChange);
+    };
+  });
+  // ...
+}
+```
+
+### 在 useEffect 中调用用函数时，要把该函数在 useEffect 中申明，不能放到外部申明，然后再在 useEffect 中调用
+
+```jsx
+react.docschina.org/docs/hooks-…
+function Example({ someProp }) {
+  function doSomething() {
+    console.log(someProp);
+  }
+
+  useEffect(() => {
+    doSomething();
+  }, []); // 🔴 这样不安全（它调用的 `doSomething` 函数使用了 `someProp`）
+}
+```
+要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 通常你会想要在 effect 内部 去声明它所需要的函数。 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值：
+```jsx
+function Example({ someProp }) {
+  useEffect(() => {
+    function doSomething() {
+      console.log(someProp);
+    }
+
+    doSomething();
+  }, [someProp]); // ✅ 安全（我们的 effect 仅用到了 `someProp`）
+}
+```
+只有 当函数（以及它所调用的函数）不引用 props、state 以及由它们衍生而来的值时，你才能放心地把它们从依赖列表中省略。下面这个案例有一个 Bug：
+```jsx
+function ProductPage({ productId }) {
+  const [product, setProduct] = useState(null);
+  async function fetchProduct() {
+    const response = await fetch('http://myapi/product' + productId); // 使用了 productId prop
+    const json = await response.json();
+    setProduct(json);
+  }
+  useEffect(() => {
+    fetchProduct();
+  }, []); // 🔴 这样是无效的，因为 `fetchProduct` 使用了 `productId`
+  // ...
+}
+```
+推荐的修复方案是把那个函数移动到你的 effect 内部。这样就能很容易的看出来你的 effect 使用了哪些 props 和 state，并确保它们都被声明了：
+
+```jsx
+function ProductPage({ productId }) {
+  const [product, setProduct] = useState(null);
+  useEffect(() => {
+    // 把这个函数移动到 effect 内部后，我们可以清楚地看到它用到的值。
+    async function fetchProduct() {
+      const response = await fetch('http://myapi/product' + productId);
+      const json = await response.json();
+      setProduct(json);
+    }
+    fetchProduct();
+  }, [productId]); // ✅ 有效，因为我们的 effect 只用到了 productId
+  // ...
+}
+```
+### 如何在 Hooks 中优雅的 Fetch Data
+
+
+
 ## 参考文章
 
 - [写 React Hooks 前必读](https://zhuanlan.zhihu.com/p/113216415)
@@ -990,3 +1131,4 @@ export default MyDemo21;
 - [React 新特性](https://cllxx.cn/2019/07/07/react-xin-te-xing-context-yi/)
 - [React 性能优化完全指南，将自己这几年的心血总结成这篇！](https://juejin.cn/post/6935584878071119885)
 - [useEffect 完整指南](https://overreacted.io/zh-hans/a-complete-guide-to-useeffect/)
+- [React Hooks 详解 【近 1W 字】+ 项目实战](https://juejin.cn/post/6844903985338400782)
