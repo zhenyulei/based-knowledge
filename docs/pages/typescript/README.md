@@ -2,7 +2,7 @@
 sidebarDepth: 2
 ---
 
-在线运行 TS 链接：![链接](https://www.typescriptlang.org/zh/play?#code/Q)
+在线运行 TS 链接：[链接](https://www.typescriptlang.org/zh/play?#code/Q)
 
 ### 1、Record 定义一个对象
 

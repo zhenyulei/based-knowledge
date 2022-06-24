@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>docker 基础知识汇总 | 前端知识集锦</title>
+    <meta name="generator" content="VuePress 1.8.2">
+    <link rel="icon" href="/favicon.ico">
+    <meta name="description" content="目录">
+    
+    <link rel="preload" href="/assets/css/0.styles.450711b3.css" as="style"><link rel="preload" href="/assets/js/app.ff2086fd.js" as="script"><link rel="preload" href="/assets/js/2.5770adf5.js" as="script"><link rel="preload" href="/assets/js/23.2f3ec950.js" as="script"><link rel="prefetch" href="/assets/js/10.c1354c1b.js"><link rel="prefetch" href="/assets/js/11.2b538361.js"><link rel="prefetch" href="/assets/js/12.c86df73f.js"><link rel="prefetch" href="/assets/js/13.21c7c305.js"><link rel="prefetch" href="/assets/js/14.1d18d1ec.js"><link rel="prefetch" href="/assets/js/15.ebfc964e.js"><link rel="prefetch" href="/assets/js/16.7c84b380.js"><link rel="prefetch" href="/assets/js/17.c8bc056a.js"><link rel="prefetch" href="/assets/js/18.d37ed7fd.js"><link rel="prefetch" href="/assets/js/19.b3d31cdf.js"><link rel="prefetch" href="/assets/js/20.5b05ed91.js"><link rel="prefetch" href="/assets/js/21.a7541cca.js"><link rel="prefetch" href="/assets/js/22.31eda56d.js"><link rel="prefetch" href="/assets/js/24.b6188ca4.js"><link rel="prefetch" href="/assets/js/25.e5c4328b.js"><link rel="prefetch" href="/assets/js/26.ec060648.js"><link rel="prefetch" href="/assets/js/27.178a9d18.js"><link rel="prefetch" href="/assets/js/28.5e2d2bbf.js"><link rel="prefetch" href="/assets/js/29.281c9341.js"><link rel="prefetch" href="/assets/js/3.580c230f.js"><link rel="prefetch" href="/assets/js/30.69ce2ec8.js"><link rel="prefetch" href="/assets/js/31.ed0654d6.js"><link rel="prefetch" href="/assets/js/32.409dec1b.js"><link rel="prefetch" href="/assets/js/33.7f731605.js"><link rel="prefetch" href="/assets/js/34.9a36d424.js"><link rel="prefetch" href="/assets/js/35.604cd201.js"><link rel="prefetch" href="/assets/js/36.d2ace23a.js"><link rel="prefetch" href="/assets/js/37.6b273057.js"><link rel="prefetch" href="/assets/js/38.826846be.js"><link rel="prefetch" href="/assets/js/39.5699f53c.js"><link rel="prefetch" href="/assets/js/4.2b057219.js"><link rel="prefetch" href="/assets/js/40.1307347a.js"><link rel="prefetch" href="/assets/js/41.23bb443b.js"><link rel="prefetch" href="/assets/js/42.502e9237.js"><link rel="prefetch" href="/assets/js/43.6ba8c235.js"><link rel="prefetch" href="/assets/js/44.94881813.js"><link rel="prefetch" href="/assets/js/45.76186aed.js"><link rel="prefetch" href="/assets/js/46.fffb0907.js"><link rel="prefetch" href="/assets/js/47.1aabb752.js"><link rel="prefetch" href="/assets/js/48.5721df18.js"><link rel="prefetch" href="/assets/js/49.3c8318c6.js"><link rel="prefetch" href="/assets/js/5.6d1bcd23.js"><link rel="prefetch" href="/assets/js/50.e2c7ca1d.js"><link rel="prefetch" href="/assets/js/51.8b5651ca.js"><link rel="prefetch" href="/assets/js/52.7d48a1a2.js"><link rel="prefetch" href="/assets/js/53.22f1a7de.js"><link rel="prefetch" href="/assets/js/54.c8b77d03.js"><link rel="prefetch" href="/assets/js/55.18db8572.js"><link rel="prefetch" href="/assets/js/56.a9dc5229.js"><link rel="prefetch" href="/assets/js/57.a527cfad.js"><link rel="prefetch" href="/assets/js/58.dce8b39b.js"><link rel="prefetch" href="/assets/js/59.0647cef6.js"><link rel="prefetch" href="/assets/js/6.10323c55.js"><link rel="prefetch" href="/assets/js/60.40df3398.js"><link rel="prefetch" href="/assets/js/61.06b8b711.js"><link rel="prefetch" href="/assets/js/62.92a732e8.js"><link rel="prefetch" href="/assets/js/63.6c347873.js"><link rel="prefetch" href="/assets/js/64.5a3d421f.js"><link rel="prefetch" href="/assets/js/65.3e01168a.js"><link rel="prefetch" href="/assets/js/66.42595ea0.js"><link rel="prefetch" href="/assets/js/67.e6322bec.js"><link rel="prefetch" href="/assets/js/68.cc6b1fbd.js"><link rel="prefetch" href="/assets/js/69.8b0c8593.js"><link rel="prefetch" href="/assets/js/7.4332225e.js"><link rel="prefetch" href="/assets/js/70.382ac3b1.js"><link rel="prefetch" href="/assets/js/71.0a3ffb41.js"><link rel="prefetch" href="/assets/js/72.718ed9ff.js"><link rel="prefetch" href="/assets/js/73.8d7636ce.js"><link rel="prefetch" href="/assets/js/74.9b8c066c.js"><link rel="prefetch" href="/assets/js/75.5b80456b.js"><link rel="prefetch" href="/assets/js/76.8fcbd55f.js"><link rel="prefetch" href="/assets/js/77.12df590a.js"><link rel="prefetch" href="/assets/js/78.2caf056c.js"><link rel="prefetch" href="/assets/js/79.9136198e.js"><link rel="prefetch" href="/assets/js/8.6c7639d2.js"><link rel="prefetch" href="/assets/js/80.7cc1d560.js"><link rel="prefetch" href="/assets/js/81.bf8c15d5.js"><link rel="prefetch" href="/assets/js/82.428ae682.js"><link rel="prefetch" href="/assets/js/83.25999b89.js"><link rel="prefetch" href="/assets/js/9.dcca5151.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.450711b3.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><!----> <span class="site-name">前端知识集锦</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/pages/links.html" class="nav-link">
+  links
+</a></div><div class="nav-item"><a href="/pages/practice.html" class="nav-link">
+  手写代码
+</a></div><div class="nav-item"><a href="https://www.vuepress.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  vuepress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/zhenyulei/based-knowledge.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/" class="nav-link">
+  Home
+</a></div><div class="nav-item"><a href="/pages/links.html" class="nav-link">
+  links
+</a></div><div class="nav-item"><a href="/pages/practice.html" class="nav-link">
+  手写代码
+</a></div><div class="nav-item"><a href="https://www.vuepress.cn/" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  vuepress
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div><div class="nav-item"><a href="https://github.com/zhenyulei/based-knowledge.git" target="_blank" rel="noopener noreferrer" class="nav-link external">
+  github
+  <span><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" focusable="false" x="0px" y="0px" viewBox="0 0 100 100" width="15" height="15" class="icon outbound"><path fill="currentColor" d="M18.8,85.1h56l0,0c2.2,0,4-1.8,4-4v-32h-8v28h-48v-48h28v-8h-32l0,0c-2.2,0-4,1.8-4,4v56C14.8,83.3,16.6,85.1,18.8,85.1z"></path> <polygon fill="currentColor" points="45.7,48.7 51.3,54.3 77.2,28.5 77.2,37.2 85.2,37.2 85.2,14.9 62.8,14.9 62.8,22.9 71.5,22.9"></polygon></svg> <span class="sr-only">(opens new window)</span></span></a></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group collapsable depth-0"><p class="sidebar-heading open"><span>docker基础知识</span> <span class="arrow down"></span></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/pages/docker/" aria-current="page" class="active sidebar-link">docker基础知识</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h3 id="docker-基础知识汇总"><a href="#docker-基础知识汇总" class="header-anchor">#</a> docker 基础知识汇总</h3> <h3 id="docker-常见命令"><a href="#docker-常见命令" class="header-anchor">#</a> docker 常见命令</h3> <p>1、docker ps -a 查看当前所有 docker 容器
+2、docker run xxx 创建 xxx
+3、start 启动/停止 stop/重启 restart/删除已停止容器 rm【先停止再删除】
+4、登陆仓库 login/拉取镜像 pull/推送 push/提交镜像 commit/给指定的容器标签‘tag’
+5、查看所有本地镜像 images/删除本地镜像 rmi
+6、查看容器服务打印的日志 logs/检阅容器 inspect/进入容器 exec
+7、查看版本 version/docker 进程信息 info</p> <p><code>docker stop $(docker ps -aq)</code>停止所有容器
+<code>docker rm $(docker ps -aq)</code> 删除所有容器</p> <h3 id="示例"><a href="#示例" class="header-anchor">#</a> 示例</h3> <p><code>≈</code>，-it 是交互终端的意思
+使用 docker 创建 ubuntu 然后在其中执行交互命令 <code>ls -la</code></p> <p>同下面的命令：</p> <p>-d 在后台运行
+-name 指定名称
+-e 设置环境变量
+-v 挂载一个文件</p> <p><code>docker run -it -d -name test ubuntu</code></p> <p><code>docker exec -it test /bin/bash</code></p> <p>则可以进入到 test 容器的 /bin/bash 中</p> <p>使用 exit 退出该容器</p> <p><code>docker run -p 8080:3306 mysql</code></p> <p>-p 把容器中的端口映射到外面宿主机来，这里是把容器 mysql 中的默认端口 3306 映射到宿主机的 8080 来</p> <p>再如执行
+<code>docker run -p 8000:3306 -e MySQL_ROOT_PASSWORD=123456 -itd --name mysql-4 mysql</code>
+含义是使用 docker 运行 mysql，把镜像中的端口 3306 映射到宿主机端口 8000 上，并且在后台交互式运行，设置该镜像的名字为 mysql-4，密码是 123456</p> <p><code>docker run -it online-server:1.0 /bin/bash</code> 进入 docker 进行交互</p> <h3 id="docker-run-v"><a href="#docker-run-v" class="header-anchor">#</a> docker run -v</h3> <p>把宿主机上的一些文件系统挂载到容器上
+例如：<code>docker run -v ~/Downloads/:/home -itd --name test1 ubuntu</code></p> <h3 id="指定拉取镜像的版本号"><a href="#指定拉取镜像的版本号" class="header-anchor">#</a> 指定拉取镜像的版本号</h3> <p><code>docker pull tomcat:8</code></p> <h3 id="登陆-docker-帐号"><a href="#登陆-docker-帐号" class="header-anchor">#</a> 登陆 docker 帐号</h3> <p>首先登陆网站： https://hub.docker.com
+进行注册：帐号：xiaozhumaopao；密码：axxxxx
+在命令行中登陆： <code>docker login</code>
+给已有的镜像打标：<code>docker commit id xiaozhumaopao/hello:1.0</code> <strong>容器 = 镜像 + 读写层</strong>也就是容器是在镜像的基础上实例化出来的，
+使用<code>docker images</code>可以查看当前的镜像
+<code>docker rmi id</code>删除镜像<br>
+使用<code>docker push xiaozhumaopao/hello:1.0</code>到注册的 docker 平台上
+使用<code>docker pull xiaozhumaopao/hello:1.0</code>就可以拉取远端的镜像了【注意更改的阿里云镜像和官网有 10 分钟的延迟】
+如果设置了私有的镜像，就要先登陆 docker</p> <p><code>docker logs id</code>或者<code>docker logs name</code> 使用 -f 命令 可以一直打印日志
+<code>docker inspect</code>可以查看容器的初始化信息
+<code>docker info</code></p> <h3 id="制作-docker-镜像"><a href="#制作-docker-镜像" class="header-anchor">#</a> 制作 docker 镜像</h3> <p>Dockerfile 是一个由一堆命令+参数构成的脚本，使用 docker build 即可执行脚本构建镜像，自动的去做一些事，主要用于持续集成；</p> <h4 id="koa-代码"><a href="#koa-代码" class="header-anchor">#</a> koa 代码</h4> <div class="language-js line-numbers-mode"><pre class="language-js"><code><span class="token keyword">const</span> Koa <span class="token operator">=</span> <span class="token function">require</span><span class="token punctuation">(</span><span class="token string">&quot;koa&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">const</span> app <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Koa</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+app<span class="token punctuation">.</span><span class="token function">use</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token parameter">ctx</span><span class="token punctuation">)</span> <span class="token operator">=&gt;</span> <span class="token punctuation">{</span>
+  ctx<span class="token punctuation">.</span>body <span class="token operator">=</span> <span class="token string">&quot;hello Koa&quot;</span><span class="token punctuation">;</span>
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+app<span class="token punctuation">.</span><span class="token function">listen</span><span class="token punctuation">(</span><span class="token number">3000</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br></div></div><h4 id="dockerfile-示例"><a href="#dockerfile-示例" class="header-anchor">#</a> DockerFile 示例</h4> <div class="language-DockerFile line-numbers-mode"><pre class="language-dockerfile"><code><span class="token instruction"><span class="token keyword">FROM</span> node:10</span>
+
+<span class="token instruction"><span class="token keyword">LABEL</span> maintainer = yulei20080106@126.com</span>
+
+<span class="token comment"># 创建 app 目录</span>
+<span class="token instruction"><span class="token keyword">WORKDIR</span> /app</span>
+
+<span class="token comment"># 把package.json,package-lok.json 或者 yarn.lock 复制到工作目录（相对路径）/app</span>
+
+<span class="token comment"># COPY [&quot;package.json&quot;,&quot;*.lock&quot;,&quot;./&quot;]</span>
+
+<span class="token comment"># 打包 app 源码</span>
+<span class="token comment"># 注意：要指定工作目录的文件名</span>
+<span class="token comment"># COPY src ./src</span>
+
+<span class="token comment"># 使用 .dockerignore 文件，上面两个COPY合并成一个</span>
+<span class="token instruction"><span class="token keyword">COPY</span> . .</span>
+
+<span class="token instruction"><span class="token keyword">RUN</span> ls -la /app</span>
+<span class="token comment"># 使用yarn安装app依赖</span>
+<span class="token comment"># 如果你需要构建生产环境下的代码，使用 --prod参数</span>
+
+<span class="token instruction"><span class="token keyword">RUN</span> yarn -prod --registry=https://registry.npm.taobao.org</span>
+
+<span class="token comment"># 对外暴露的端口</span>
+
+<span class="token instruction"><span class="token keyword">EXPOSE</span> 3000</span>
+
+<span class="token instruction"><span class="token keyword">CMD</span> [<span class="token string">&quot;node&quot;</span>,<span class="token string">&quot;src/index.js&quot;</span>]</span>
+
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br><span class="line-number">25</span><br><span class="line-number">26</span><br><span class="line-number">27</span><br><span class="line-number">28</span><br><span class="line-number">29</span><br><span class="line-number">30</span><br></div></div><h4 id="dockerignore"><a href="#dockerignore" class="header-anchor">#</a> .dockerignore</h4> <div class="language- line-numbers-mode"><pre class="language-text"><code>node_modules
+.DS_Store
+dist
+
+.lock-wscript
+
+build/Release
+.dockerignore
+Dockerfile
+*docker-compose*
+
+logs
+*.log
+
+.idea
+.vscode
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br></div></div><p>使用<code>docker build -t xiaozhumaopao/mykoa:1.0 .</code>打包；
+其中最后的 <code>.</code> 表示使用当前目录下的 dockerfile
+docker build 之后，使用 docker images 可以查看当前的 docker 镜像
+执行 <code>docker run -itd --name koa -p 4000:3000 xiaozhumaopao/mykoa:1.0</code>
+使用 docker ps 可以查看当前容器
+使用 <code>docker push xiaozhumaopao/mykoa:1.0</code></p> <h3 id="docker-compose"><a href="#docker-compose" class="header-anchor">#</a> docker compose</h3> <p>1、安装</p> <p>https://docs.docker.com/compose/install/</p> <blockquote><p>注意，mac 上安装了 docker 则自动的安装了 docker-compose</p></blockquote> <p>执行<code>docker-compose --version</code>可以查看其版本号</p> <p>常见示例：</p> <div class="language-yml line-numbers-mode"><pre class="language-yml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">'3'</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">mysql</span><span class="token punctuation">:</span>
+    image<span class="token punctuation">:</span>mysql
+    container_name<span class="token punctuation">:</span>test<span class="token punctuation">-</span>mysql
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> <span class="token string">&quot;8000:3306&quot;</span>
+    <span class="token key atrule">enviroment</span><span class="token punctuation">:</span>
+    <span class="token punctuation">-</span> MYSQL_ROOT_PASSWORD=123456
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>在该文件目录下，使用 <code>docker-compose up -d</code>执行,相当于执行了上面的 docker xxx 然后执行的-d
+执行“docker-compose rm”删除刚刚建立的容器
+生命周期管理：
+创建： run/up
+启动： start/stop/rm/restart
+日志/检视：logs/ps</p> <h3 id="项目实战"><a href="#项目实战" class="header-anchor">#</a> 项目实战</h3> <p>使用 npm i koa 安装 koa 依赖后，创建 server 文件夹
+使用 npx vue create front 创建 vue2 的前端项目
+在 server 文件夹中，使用 docker 安装 mongo ，新建 docker-compose.yml 文件，执行<code>docker-compose up -d</code> 启动 mongo,使用 docker ps 查看启动的服务
+安装 mongoose 操作 mongo，在 serve 文件夹下执行 npm i mongoose -S
+新建 dbconfig.js 文件
+使用<code>node src/dbconfig.js</code> 可以测试链接的数据库是否成功</p> <p>开发完项目之后，在 front 文件夹中 执行 <code>npm run build</code> 新建 dockerfile 创建 nginx 命令</p> <p>front 项目应为是打包了 所以不用设置 dockerignore</p> <div class="language-dockerfile line-numbers-mode"><pre class="language-dockerfile"><code><span class="token instruction"><span class="token keyword">FROM</span> nginx</span>
+
+<span class="token instruction"><span class="token keyword">COPY</span> ./dist /usr/share/nginx/html</span>
+
+<span class="token instruction"><span class="token keyword">RUN</span> ls -la /usr/share/nginx/html</span>
+
+<span class="token instruction"><span class="token keyword">EXPOSE</span> 80</span>
+
+<span class="token instruction"><span class="token keyword">CMD</span> [<span class="token string">&quot;nginx&quot;</span>,<span class="token string">&quot;-g&quot;</span>,<span class="token string">&quot;daemon off;&quot;</span>]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br></div></div><p>然后执行打包命令 <code>docker build -t web:1.0 .</code></p> <p>在 server 文件夹中新建 dockerfile</p> <div class="language-dockerfile line-numbers-mode"><pre class="language-dockerfile"><code><span class="token instruction"><span class="token keyword">FROM</span> node:10</span>
+
+<span class="token instruction"><span class="token keyword">WORKDIR</span> /app</span>
+
+<span class="token instruction"><span class="token keyword">COPY</span> . .</span>
+
+<span class="token instruction"><span class="token keyword">RUN</span> yarn install --registry==http://registry.m.jd.com/</span>
+
+<span class="token instruction"><span class="token keyword">EXPOSE</span> 3000</span>
+
+<span class="token instruction"><span class="token keyword">CMD</span> [<span class="token string">&quot;node&quot;</span> ,<span class="token string">&quot;src/app.js&quot;</span>]</span>
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br></div></div><p>修改 dbconfig.js 文件中的链接 <code>mongodb://root:example@db:27017/admin&quot;</code>
+打包 server <code>docker build -t server:1.0 .</code></p> <p>links: https://docs.docker.com/network/links/</p> <p>在 front 和 server 外层编辑： docker-compose.yml
+打包命令： <code>docker-compose up -d</code></p> <p>然后访问 <code>http://localhost:8080/</code>即可；</p> <p>最后如果想上传 docker 到自己的 <code>https://hub.docker.com/u/xiaozhumaopao</code>上</p> <p>（1）在 front 文件夹下新建 dockerfile，执行</p> <ul><li>使用<code>docker build -t xiaozhumaopao/vueweb:1.0 .</code>打包；</li> <li>使用<code>docker push xiaozhumaopao/vueweb:1.0</code>上传；</li></ul> <p>（2）在 server 文件夹下新建 dockerfile，执行</p> <ul><li>使用<code>docker build -t xiaozhumaopao/koaweb:1.0 .</code>打包；</li> <li>使用<code>docker push xiaozhumaopao/koaweb:1.0</code>上传；</li></ul> <p>（3）在任意一个地方新建 docker-compose.yml 文件，执行<code>docker-compose up -d</code>,然后访问 <code>http://localhost:8080/</code>即可；</p> <div class="language-yml line-numbers-mode"><pre class="language-yml"><code><span class="token key atrule">version</span><span class="token punctuation">:</span> <span class="token string">&quot;3&quot;</span>
+<span class="token key atrule">services</span><span class="token punctuation">:</span>
+  <span class="token key atrule">web</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> xiaozhumaopao/vueweb<span class="token punctuation">:</span><span class="token number">1.0</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;8080:80&quot;</span>
+
+  <span class="token key atrule">server</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> xiaozhumaopao/koaweb<span class="token punctuation">:</span><span class="token number">1.0</span>
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;3000:3000&quot;</span>
+    <span class="token key atrule">links</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> mongodb<span class="token punctuation">:</span>db
+
+  <span class="token key atrule">mongodb</span><span class="token punctuation">:</span>
+    <span class="token key atrule">image</span><span class="token punctuation">:</span> mongo
+    <span class="token key atrule">restart</span><span class="token punctuation">:</span> always
+    <span class="token key atrule">ports</span><span class="token punctuation">:</span>
+      <span class="token punctuation">-</span> <span class="token string">&quot;27017:27017&quot;</span>
+    <span class="token key atrule">environment</span><span class="token punctuation">:</span>
+      <span class="token key atrule">MONGO_INITDB_ROOT_USERNAME</span><span class="token punctuation">:</span> root
+      <span class="token key atrule">MONGO_INITDB_ROOT_PASSWORD</span><span class="token punctuation">:</span> example
+</code></pre> <div class="line-numbers-wrapper"><span class="line-number">1</span><br><span class="line-number">2</span><br><span class="line-number">3</span><br><span class="line-number">4</span><br><span class="line-number">5</span><br><span class="line-number">6</span><br><span class="line-number">7</span><br><span class="line-number">8</span><br><span class="line-number">9</span><br><span class="line-number">10</span><br><span class="line-number">11</span><br><span class="line-number">12</span><br><span class="line-number">13</span><br><span class="line-number">14</span><br><span class="line-number">15</span><br><span class="line-number">16</span><br><span class="line-number">17</span><br><span class="line-number">18</span><br><span class="line-number">19</span><br><span class="line-number">20</span><br><span class="line-number">21</span><br><span class="line-number">22</span><br><span class="line-number">23</span><br><span class="line-number">24</span><br></div></div><h3 id="docker-构建镜像"><a href="#docker-构建镜像" class="header-anchor">#</a> docker 构建镜像</h3> <h4 id="删除当前所有容器"><a href="#删除当前所有容器" class="header-anchor">#</a> 删除当前所有容器</h4> <p>一个镜像可以构建多个容器，容器=镜像+读写层，容器是在镜像的基础上实例化出来的；
+首先删除当前机器上所有的容器和镜像；
+删除容器：
+<code>docker ps -a</code> 查看当前所有 docker 容器
+<code>docker stop $(docker ps -aq)</code>停止所有容器
+<code>docker rm $(docker ps -aq)</code> 删除所有容器</p> <p>删除镜像：
+<code>docker images</code>可以查看当前的镜像
+<code>docker rmi $(docker images -q)</code>删除全部 image</p> <blockquote><p>解决删除镜像时 image is referenced in multiple repositories
+答：<code>docker rmi 镜像name:1.0</code></p></blockquote> <p>/Users/zhenyulei/Documents/JD/2021/watcher/imge-demo</p> <p>docker run -it -d -p 8080:80 --name datahttpd -v /Users/zhenyulei/Documents/JD/2021/watcher/imge-demo/:/usr/local/apache2/htdocs/ httpd
+docker run -itd --name datahttpd -p 4000:80 httpd</p> <p>docker run -it a2736b48821c /bin/bash</p></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.ff2086fd.js" defer></script><script src="/assets/js/2.5770adf5.js" defer></script><script src="/assets/js/23.2f3ec950.js" defer></script>
+  </body>
+</html>
