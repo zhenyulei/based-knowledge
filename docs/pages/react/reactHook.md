@@ -984,7 +984,7 @@ export default MyDemo21;
 
 > 2022 年 6 月 23 日更新
 
-### 每次渲染都是独立的闭包
+## 每次渲染都是独立的闭包
 
 - 每一次渲染都有它自己的 Props 和 State
 - 每一次渲染都有它自己的事件处理函数
@@ -1009,7 +1009,7 @@ function Counter2() {
 }
 ```
 
-### 惰性初始化 state
+## 惰性初始化 state
 
 - initialState 参数只会在组件的初始化渲染中起作用，后续渲染时会被忽略
 - 如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用
@@ -1034,7 +1034,7 @@ function Counter5(props) {
 }
 ```
 
-### 使用多个 Effect 实现关注点分离
+## 使用多个 Effect 实现关注点分离
 
 Hook 允许我们按照代码的用途分离他们， 而不是像生命周期函数那样。React 将按照 effect 声明的顺序依次调用组件中的 每一个 effect。
 
@@ -1061,7 +1061,9 @@ function FriendStatusWithCounter(props) {
 }
 ```
 
-### 在 useEffect 中调用用函数时，要把该函数在 useEffect 中申明，不能放到外部申明，然后再在 useEffect 中调用
+## 在 useEffect 中调用用函数
+
+要把该函数在 useEffect 中申明，不能放到外部申明，然后再在 useEffect 中调用，async 的调用
 
 ```jsx
 react.docschina.org/docs/hooks-…
@@ -1075,24 +1077,30 @@ function Example({ someProp }) {
   }, []); // 🔴 这样不安全（它调用的 `doSomething` 函数使用了 `someProp`）
 }
 ```
-要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 通常你会想要在 effect 内部 去声明它所需要的函数。 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值：
-```jsx
-function Example({ someProp }) {
-  useEffect(() => {
-    function doSomething() {
-      console.log(someProp);
-    }
 
-    doSomething();
-  }, [someProp]); // ✅ 安全（我们的 effect 仅用到了 `someProp`）
-}
+要记住 effect 外部的函数使用了哪些 props 和 state 很难。这也是为什么 通常你会想要在 effect 内部 去声明它所需要的函数。 这样就能容易的看出那个 effect 依赖了组件作用域中的哪些值：
+
+```jsx
+import React, { useRef, useEffect, useState } from "react";
+const App = () => {
+  useEffect(() => {
+    const getUser = async () => {
+      const user = await getUser();
+    };
+    getUser();
+  }, []);
+  return <div>hello</div>;
+};
+export default App;
 ```
+
 只有 当函数（以及它所调用的函数）不引用 props、state 以及由它们衍生而来的值时，你才能放心地把它们从依赖列表中省略。下面这个案例有一个 Bug：
+
 ```jsx
 function ProductPage({ productId }) {
   const [product, setProduct] = useState(null);
   async function fetchProduct() {
-    const response = await fetch('http://myapi/product' + productId); // 使用了 productId prop
+    const response = await fetch("http://myapi/product" + productId); // 使用了 productId prop
     const json = await response.json();
     setProduct(json);
   }
@@ -1102,6 +1110,7 @@ function ProductPage({ productId }) {
   // ...
 }
 ```
+
 推荐的修复方案是把那个函数移动到你的 effect 内部。这样就能很容易的看出来你的 effect 使用了哪些 props 和 state，并确保它们都被声明了：
 
 ```jsx
@@ -1110,7 +1119,7 @@ function ProductPage({ productId }) {
   useEffect(() => {
     // 把这个函数移动到 effect 内部后，我们可以清楚地看到它用到的值。
     async function fetchProduct() {
-      const response = await fetch('http://myapi/product' + productId);
+      const response = await fetch("http://myapi/product" + productId);
       const json = await response.json();
       setProduct(json);
     }
@@ -1119,9 +1128,45 @@ function ProductPage({ productId }) {
   // ...
 }
 ```
-### 如何在 Hooks 中优雅的 Fetch Data
 
+## usememo 和使用 useHook 获取立即生效的 data
 
+下面示例中，点击按钮，ChildBox 自组件虽然没有改变 props，但是也会改变
+
+```tsx
+import React, { useState, useCallback, useMemo } from "react";
+import { Button } from "antd-mobile";
+interface BoxIprops {
+  title: string;
+}
+
+const ChildBox: React.FC<BoxIprops> = (props) => {
+  const { title } = props;
+  console.log(title);
+  return <div>{title}</div>;
+};
+
+const Box = () => {
+  const [num, setNum] = useState(0);
+  const changeNum = () => {
+    const newNum = num + 1;
+    setNum(newNum);
+    console.log(num);
+  };
+  return (
+    <>
+      <h1>{num}</h1>
+      <ChildBox title="标题" />
+      <Button color="primary" onClick={changeNum}>
+        点击
+      </Button>
+      ;
+    </>
+  );
+};
+
+export default Box;
+```
 
 ## 参考文章
 

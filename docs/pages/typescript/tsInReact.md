@@ -4,7 +4,7 @@ sidebarDepth: 1
 
 > 代码放在 `demo/react/awesome/src/components/MyTsInReact` 文件夹中
 
-### 1、给 state 设置 TS 类型
+## 1、给 state 设置 TS 类型
 
 ```js
 interface ISourceMapList {
@@ -15,7 +15,7 @@ interface ISourceMapList {
 const [srcList, setSrcList] = useState<ISourceMapList[]>([]);
 ```
 
-### 2、给函数设置类型
+## 2、给函数设置类型
 
 ```js
 const handleCurrNumber = (
@@ -57,7 +57,7 @@ const animalsInfo: IPets = {
 };
 ```
 
-### 属性名不确定的对象
+## 属性名不确定的对象
 
 ```jsx
 /* 属性名不确定的对象 */
@@ -75,7 +75,15 @@ paths.settings = "/settings"; //OK
 paths.somePath = "/somePath"; //OK
 ```
 
-### React.FC 的使用
+## React.FC 的使用[删除]
+
+> 注意，React18 修改了 FC 的类型定义，现在并不会包含 children 属性了，需要自己定义：
+
+```tsx
+interface TestProps {
+  children: React.ReactNode;
+}
+```
 
 - 1、React.FC 是函数式组件，等同于 React.FunctionComponent：
 - 2、props 自动获得传入的泛型已经 children 属性，函数自动获得 propTypes,contextTypes,defaultProps 和 displayName 四个属性，
@@ -84,6 +92,16 @@ paths.somePath = "/somePath"; //OK
 
 ```js
 import React from "react";
+/*
+// 等同于
+IPropsType & { 
+  children: React.ReactNode 
+  propTypes?: WeakValidationMap<P>;
+  contextTypes?: ValidationMap<any>;
+  defaultProps?: Partial<P>;
+  displayName?: string;
+}
+*/
 interface IPropsType {
   message: string;
 }
@@ -108,6 +126,8 @@ const MyTsDemo1 = () => {
 
 export default MyTsDemo1;
 ```
+
+改为：
 
 ```js
 import React from "react";
@@ -295,8 +315,28 @@ export default App;
 如果已知 state 的类型，可以通过以下形式来自定义 state 的类型：
 `const [count, setCount] = useState<number>(1)`
 
-如果初始值为 null，需要显式地声明 state 的类型：
+如果初始值为 null，需要显式地声明 state 的类型,这样也可以保证在你直接访问 count 上的属性时，提示你它有可能是 null。
 `const [count, setCount] = useState<number | null>(null);`
+
+```tsx
+import React, { useRef, useEffect, useState } from "react";
+interface IUser {
+  name: string;
+}
+const App: React.FC = () => {
+  const [user, setUser] = useState<IUser | null>(null);
+  const changeFun = () => {
+    //否则这里报错
+    setUser({ ...user, name: "hello" });
+  };
+  return (
+    <div>
+      <div onClick={changeFun}>{user?.name}btn</div>
+    </div>
+  );
+};
+export default App;
+```
 
 如果 state 是一个对象，想要初始化一个空对象，可以使用断言来处理：
 `const [user, setUser] = React.useState<IUser>({} as IUser);`
@@ -335,12 +375,17 @@ import React, { useRef, useEffect } from "react";
 const App = () => {
   const nameInput = useRef<HTMLInputElement>(null);
   useEffect(() => {
+    //如果上面没有定义HTMLInputElement，则这里报错,如果没有？也会报错
     nameInput.current?.focus();
   }, []);
   return <input ref={nameInput} />;
 };
 export default App;
 ```
+
+`const ref1 = useRef<HTMLElement>(null!);`
+
+`null!`这种语法是非空断言，跟在一个值后面表示你断定它是有值的，所以在你使用 inputEl.current.focus() 的时候，TS 不会给出报错。
 
 ### Event 事件类型
 

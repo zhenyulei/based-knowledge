@@ -66,10 +66,6 @@ module.exports = {
           ],
         },
         {
-          title: "TS支持",
-          children: ["tsVue"],
-        },
-        {
           title: "vuex",
           children: ["vuex"],
         },
@@ -84,6 +80,7 @@ module.exports = {
           children: [
             ["", "目录"],
             ["reactHook", "聊聊 React Hook 容易踩的坑"],
+            ["memo", "React.memo 与 useMemo 的区别和联系"],
             ["reactLife", "React生命周期"],
             ["reactRouter", "React路由"],
           ],
@@ -99,8 +96,9 @@ module.exports = {
         {
           title: "TypeScript",
           children: [
-            ["", "安装TS"],
-            ["tsInReact.md", "TS 在 React 中的应用"],
+            ["", "TS基础知识"],
+            ["tsInReact", "TS 在 React 中的应用"],
+            ["tsInVue", "TS 在 Vue 中的应用"],
           ],
         },
       ],
@@ -139,7 +137,13 @@ module.exports = {
           title: "ES6",
           children: [
             ["", "目录"],
+            ["Function", "函数Function"],
+            ["es6object", "对象Object"],
             ["object", "面向对象编程"],
+            ["class", "class类"],
+            ["Symbol", "Symbol类型"],
+            ["Set", "Set类型"],
+            ["Map", "Map类型"],
             ["writing", "手写js方法"],
             ["executionContext", "执行上下文"],
             ["objectChain", "作用域链"],
@@ -202,12 +206,6 @@ module.exports = {
       "/pages/security/": [
         {
           title: "安全方面",
-          children: [["", "目录"]],
-        },
-      ],
-      "/pages/typescript/": [
-        {
-          title: "TS",
           children: [["", "目录"]],
         },
       ],

@@ -218,7 +218,9 @@ const myName: Iprops = {
 };
 ```
 
-### Partial<T> 作用：将所有属性变为可选的,Required<T> 作用：将所有属性变为必选的
+### Partial
+
+`Partial<T> 作用：将所有属性变为可选的,Required<T> 作用：将所有属性变为必选的`
 
 ```ts
 interface Props {
