@@ -1168,6 +1168,54 @@ const Box = () => {
 export default Box;
 ```
 
+### useState 函数式形式和变量形式区别
+
+```jsx
+import { useState, useEffect } from "react";
+import "./App.css";
+
+//变量的形式：1、多个set会合并；2、每次取到的值是当前的data
+const Box1 = () => {
+  const [num, setNum] = useState(0);
+  const add = () => {
+    setNum(num + 1);
+    setNum(num + 1);
+    setNum(num + 1);
+  };
+  return (
+    <>
+      <button onClick={add}>点击</button>
+      <div>{num}</div>
+    </>
+  );
+};
+//函数的形式：1、多个set不会合并；2、每次取到的值是上一时刻的data
+const Box2 = () => {
+  const [num, setNum] = useState(0);
+  const add = () => {
+    setNum((num) => num + 1);
+    setNum((num) => num + 1);
+    setNum((num) => num + 1);
+  };
+  return (
+    <>
+      <button onClick={add}>点击</button>
+      <div>{num}</div>
+    </>
+  );
+};
+function App() {
+  return (
+    <div className="App">
+      <Box1 />
+      <Box2 />
+    </div>
+  );
+}
+
+export default App;
+```
+
 ## 参考文章
 
 - [写 React Hooks 前必读](https://zhuanlan.zhihu.com/p/113216415)

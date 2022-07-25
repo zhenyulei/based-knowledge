@@ -81,6 +81,7 @@ module.exports = {
             ["", "目录"],
             ["reactHook", "聊聊 React Hook 容易踩的坑"],
             ["memo", "React.memo 与 useMemo 的区别和联系"],
+            ["SOLIDInReact", "如何在React中应用SOLID原则"],
             ["reactLife", "React生命周期"],
             ["reactRouter", "React路由"],
           ],
