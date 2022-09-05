@@ -182,7 +182,10 @@ module.exports = {
       "/pages/node/": [
         {
           title: "node",
-          children: [["", "目录"]],
+          children: [
+            ["", "目录"],
+            ["pm2", "pm2配置开机自启动项目"],
+          ],
         },
       ],
       "/pages/other/": [
