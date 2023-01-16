@@ -222,7 +222,10 @@ module.exports = {
       "/pages/vue/": [
         {
           title: "vue2.0",
-          children: [["", "目录"]],
+          children: [
+            ["", "目录"],
+            ["vueDoc", "重学vue文档"],
+          ],
         },
       ],
       "/pages/webpack/": [
@@ -256,6 +259,18 @@ module.exports = {
         {
           title: "server相关知识",
           children: [["", "server基础知识"]],
+        },
+      ],
+      "/pages/short/": [
+        {
+          title: "server相关知识",
+          children: [["", "server基础知识"]],
+        },
+      ],
+      "/pages/photo/": [
+        {
+          title: "摄影相关知识",
+          children: [["", "相机基础知识"]],
         },
       ],
     },

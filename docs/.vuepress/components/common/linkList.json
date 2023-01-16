@@ -106,5 +106,14 @@
         "link": "/pages/nginx/"
       }
     ]
+  },
+  {
+    "type": "摄影相关知识",
+    "children": [
+      {
+        "title": "摄影基础知识",
+        "link": "/pages/photo/"
+      }
+    ]
   }
 ]
