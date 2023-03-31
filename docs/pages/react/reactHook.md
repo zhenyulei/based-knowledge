@@ -978,6 +978,42 @@ export default MyDemo21;
 
 上述示例中，子组件使用了 forwardRef 进行包裹，则父组件可以通过 ref 透传对子组件的控制。也就是首次渲染子组件的时候，就会将光标放置在子组件的 input 输入框中。
 
+## 问题 8、state 发生变化后更新问题
+
+由于每次渲染 react 函数式组件，会产生闭包，所以更改 state 之后，如果没有在 html 中使用，哪怕是异步延迟获取 state，获取到也是当时函数中的 state，所以 isBindCopy 一直是 false。
+如果在 html 中监听函数，比如点击函数由于 html 模版每次渲染不属于闭包，点击后触发的事件相当于新渲染的事件，获得的数据就是最新改版后的数据，则 isBindCopy 是 true。
+
+- 还有解决方法是使用 useRef
+- 或者使用 mobx 的全局状态管理
+
+```jsx
+import { useState, useEffect } from "react";
+
+function App() {
+  let [isBindCopy, setIsBindCopy] = useState("false");
+  useEffect(() => {
+    // 判断是否授权
+    setIsBindCopy("true");
+    asyncFun();
+  }, []);
+  const asyncFun = () => {
+    setTimeout(() => {
+      console.log(`asyncFun`, isBindCopy); //asyncFun false
+    }, 3000);
+  };
+  const clickFun = () => {
+    console.log(`clickFun`, isBindCopy); //clickFun true
+  };
+  return (
+    <>
+      <div onClick={clickFun}>按钮</div>
+    </>
+  );
+}
+
+export default App;
+```
+
 ## 总结
 
 好了，洋洋洒洒通过了 20+个示例，介绍了 React Hook 在日常开发中要注意的一些问题和遇到过的坑，夯实了基础，相信遇见类似的问题不再一头雾水。然而整个 React Hook 知识体系庞大，后面我们仍需要总结学习，以上权当抛砖引玉，欢迎各位小伙伴留言讨论。

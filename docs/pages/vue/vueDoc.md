@@ -393,4 +393,124 @@ const props = defineProps(["size"]);
 const normalizedSize = computed(() => props.size.trim().toLowerCase());
 ```
 
-https://cn.vuejs.org/guide/components/props.html#one-way-data-flow
+## 事件校验
+
+要为事件添加校验，那么事件可以被赋值为一个函数，接受的参数就是抛出事件时传入 emit 的内容，返回一个布尔值来表明事件是否合法。
+
+父组件
+
+```vue
+<template>
+  <HelloWorld :initData="initData" @enlargeText="enlargeText" />
+</template>
+
+<script setup>
+import HelloWorld from "./components/HelloWorld.vue";
+const enlargeText = (email, password) => {
+  console.info(`email,${email};password,${password}`);
+};
+</script>
+```
+
+子组件
+
+```vue
+<template>
+  <button @click="submitForm('bj', 123)">点击按钮</button>
+</template>
+
+<script setup>
+const emit = defineEmits({
+  // 没有校验
+  enlargeText: (email, password) => {
+    if (email && password) {
+      return true;
+    } else {
+      console.info("Invalid submit event payload!");
+      return false;
+    }
+  },
+});
+
+function submitForm(email, password) {
+  emit("enlargeText", email, password);
+}
+</script>
+```
+
+## 组件中使用 v-model 变换子组件内容 改变父组件
+
+而当使用在一个组件上时，v-model 会被展开为如下的形式：
+
+```vue
+<CustomInput
+  :modelValue="searchText"
+  @update:modelValue="(newValue) => (searchText = newValue)"
+></CustomInput>
+```
+
+要让这个例子实际工作起来，`<CustomInput>` 组件内部需要做两件事：
+
+将内部原生 input 元素的 value attribute 绑定到 modelValue prop
+输入新的值时在 input 元素上触发 update:modelValue 事件
+
+父组件：
+
+```vue
+<template><HelloWorld v-model="searchText" />{{ searchText }}</template>
+
+<script setup>
+import HelloWorld from "./components/HelloWorld.vue";
+import { ref } from "vue";
+const searchText = ref("hello");
+</script>
+```
+
+子组件：
+
+```vue
+<script setup>
+defineProps(["modelValue"]);
+defineEmits(["update:modelValue"]);
+</script>
+<template>
+  <input
+    :value="modelValue"
+    @input="$emit('update:modelValue', $event.target.value)"
+  />
+</template>
+```
+
+## 禁用 Attributes 继承
+
+最常见的需要禁用 attribute 继承的场景就是 attribute 需要应用在根节点以外的其他元素上。通过设置 inheritAttrs 选项为 false，你可以完全控制透传进来的 attribute 被如何使用
+父组件：
+
+```vue
+<template>
+  <HelloWorld :class="ceshiClass" :style="{ color: 'red' }" />
+</template>
+<script setup>
+import HelloWorld from "./components/HelloWorld.vue";
+import { ref } from "vue";
+const ceshiClass = ref("hello");
+</script>
+```
+
+子组件：
+
+```vue
+<template>
+  <div class="btn-wrapper">
+    <button class="btn" v-bind="$attrs">click me</button>
+  </div>
+</template>
+
+<script>
+export default {
+  inheritAttrs: false,
+};
+</script>
+```
+
+https://cn.vuejs.org/guide/components/attrs.html#disabling-attribute-inheritance
