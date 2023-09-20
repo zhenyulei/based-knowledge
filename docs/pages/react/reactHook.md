@@ -1014,6 +1014,53 @@ function App() {
 export default App;
 ```
 
+## 问题9: 数据监听问题汇总
+
+代码功能：
+
+- 点击按钮后 5秒后执行setTimeOut
+- 执行顺序是 2-3-1
+- useRef不具有数据的监听功能 不能放在html中 也不能作为useEffect的监听项
+- 没有在html中使用到的useState数据，异步获取无法获取到最新的值
+
+
+```jsx
+
+import React, { useEffect, useState, useRef } from 'react';
+
+const OrderDemo = () => {
+  const [dataStr, setDataStr] = useState('false');
+  const strRef = useRef('false');
+  useEffect(() => {
+    setDataStr('true');
+    setTimeout(() => {
+      //useState设置的值，如果没有在html中使用，即使改变了值，在异步函数中也无法获取更新后的值
+      console.log('1', dataStr, strRef.current); //1 false true
+    }, 5000);
+  }, []);
+
+  //不要使用useRef的值用来作为监听项,useRef的变化不会被监听到
+  useEffect(() => {
+    console.log('2', dataStr, strRef.current); //2 false false
+  }, [strRef.current]);
+
+  const changeBtns = () => {
+    strRef.current = 'true';
+    setDataStr('true');
+    console.log('3', dataStr, strRef.current); //3 true true
+  };
+
+  return (
+    <div>
+      <p>不要使用useRef的值放在html中，不会监听变化而重新渲染页面</p>
+      <button onClick={changeBtns}>点击改变{strRef.current}</button>
+    </div>
+  );
+};
+export default OrderDemo;
+
+```
+
 ## 总结
 
 好了，洋洋洒洒通过了 20+个示例，介绍了 React Hook 在日常开发中要注意的一些问题和遇到过的坑，夯实了基础，相信遇见类似的问题不再一头雾水。然而整个 React Hook 知识体系庞大，后面我们仍需要总结学习，以上权当抛砖引玉，欢迎各位小伙伴留言讨论。
