@@ -1298,6 +1298,43 @@ function App() {
 
 export default App;
 ```
+## 父组件调用子组件的方法
+
+
+比如，子组件是一个input输入框，组件内部有个x号可以清除输入的内容，同时要求在父组件中也可以清除子组件的内容，可以使用`forwardRef`和 `useImperativeHandle`，使得通过子组件抛出函数，父组件可以调用抛出的函数。
+
+```tsx
+import {forwardRef,useState,useImperativeHandle,useRef} from 'react'
+
+//子组件内容
+const ParentCallChildrenFunOrigin =forwardRef((props, refparams)=>{
+ useImperativeHandle(refparams, () => {
+    return {
+        clearInput
+    }
+  },[])
+    const [inputValue,setInputValue] = useState("")
+    const clearInput = ()=>{
+        setInputValue("")
+    }
+    return <div>
+        <input type="text" value={inputValue}  onChange={(e)=>{setInputValue(e.target.value)}}/>
+        <button onClick={clearInput}>子组件删除</button>
+    </div>
+}) 
+//父组件内容
+const ParentComponent = ()=>{
+    const childRef = useRef<any>(null)
+    const parentClear = ()=>{
+        childRef.current?.clearInput()
+    }
+    return  <div>
+        <ParentCallChildrenFunOrigin ref={childRef}/>
+        <button onClick={parentClear}>父组件删除</button>
+    </div>
+}
+export default ParentComponent;
+```
 
 ## 参考文章
 
