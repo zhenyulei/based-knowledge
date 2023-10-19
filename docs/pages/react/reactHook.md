@@ -978,6 +978,46 @@ export default MyDemo21;
 
 上述示例中，子组件使用了 forwardRef 进行包裹，则父组件可以通过 ref 透传对子组件的控制。也就是首次渲染子组件的时候，就会将光标放置在子组件的 input 输入框中。
 
+
+## 7.1 父组件调用子组件的方法
+
+
+比如，子组件是一个input输入框，组件内部有个x号可以清除输入的内容，同时要求在父组件中也可以清除子组件的内容，可以使用`forwardRef`和 `useImperativeHandle`，使得通过子组件抛出函数，父组件可以调用抛出的函数。
+
+```tsx
+import {forwardRef,useState,useImperativeHandle,useRef} from 'react'
+
+//子组件内容
+const ParentCallChildrenFunOrigin =forwardRef((props, refparams)=>{
+ useImperativeHandle(refparams, () => {
+    return {
+        clearInput
+    }
+  },[])
+    const [inputValue,setInputValue] = useState("")
+    const clearInput = ()=>{
+        setInputValue("")
+    }
+    return <div>
+        <input type="text" value={inputValue}  onChange={(e)=>{setInputValue(e.target.value)}}/>
+        <button onClick={clearInput}>子组件删除</button>
+    </div>
+}) 
+//父组件内容
+const ParentComponent = ()=>{
+    const childRef = useRef<any>(null)
+    const parentClear = ()=>{
+        childRef.current?.clearInput()
+    }
+    return  <div>
+        <ParentCallChildrenFunOrigin ref={childRef}/>
+        <button onClick={parentClear}>父组件删除</button>
+    </div>
+}
+export default ParentComponent;
+```
+
+
 ## 问题 8、state 发生变化后更新问题
 
 由于每次渲染 react 函数式组件，会产生闭包，所以更改 state 之后，如果没有在 html 中使用，哪怕是异步延迟获取 state，获取到也是当时函数中的 state，所以 isBindCopy 一直是 false。
@@ -1015,6 +1055,52 @@ export default App;
 ```
 
 ## 问题9: 数据监听问题汇总
+
+useRef变化到底是否可以监听？
+
+- 1、点击按钮1，改变了`strRef.current`，即时页面html用到了`strRef.current`，也无法使用useEffect监听到 `strRef.current`发生了变化，并且html也不发生变化，也就是 `strRef.current` 本身并没有触发监听事件。
+- 2、点击了按钮2，在改变了`strRef.current`的同时，改变了useState的数据，则不但页面html发生了变化,且更新了`strRef.current`，监听到`strRef.current`的变化
+- 3、点击了按钮4，虽然改变了state和`strRef.current`，但是state没有在html中使用，但是只要改变了state，就会监听到 `strRef.current`的更新，html中的`strRef.current`也会发生变化；
+- 4、先点击按钮1，再点击了按钮3，同点击按钮2，只要state发生了变化，就会触发`strRef.current`的监听。
+
+```tsx
+import React, { useEffect, useState, useRef } from 'react';
+const EffectChangeFun = ()=>{
+    const strRef = useRef('false');
+    const [currStatus,setCurrStatus] = useState("one")
+    const [noUsedStatus,setNoUsedStatus] = useState("one")
+    //
+    useEffect(()=>{
+        console.log("strRef.current",strRef.current)
+    },[strRef.current])
+    //点击按钮1 只改变strRef.current
+    const changeBtns = () => {
+        strRef.current = 'true';
+    };
+    const changeStateBtns = ()=>{
+         strRef.current = 'true';
+        setCurrStatus("second")
+    }
+    const changeThreeBtns = ()=>{
+        setCurrStatus("three")
+    }
+    const changeForthBtns = ()=>{
+        setNoUsedStatus("forth")
+    }
+    return (
+        <div>
+        <p>{strRef.current}</p>
+        <button onClick={changeBtns}>按钮1</button>
+        <div>{currStatus}</div>
+        <button onClick={changeStateBtns}>按钮2</button>
+         <button onClick={changeThreeBtns}>按钮3</button>
+          <button onClick={changeForthBtns}>按钮4</button>
+        </div>
+    );
+}
+
+export default EffectChangeFun;
+```
 
 代码功能：
 
@@ -1298,43 +1384,7 @@ function App() {
 
 export default App;
 ```
-## 父组件调用子组件的方法
 
-
-比如，子组件是一个input输入框，组件内部有个x号可以清除输入的内容，同时要求在父组件中也可以清除子组件的内容，可以使用`forwardRef`和 `useImperativeHandle`，使得通过子组件抛出函数，父组件可以调用抛出的函数。
-
-```tsx
-import {forwardRef,useState,useImperativeHandle,useRef} from 'react'
-
-//子组件内容
-const ParentCallChildrenFunOrigin =forwardRef((props, refparams)=>{
- useImperativeHandle(refparams, () => {
-    return {
-        clearInput
-    }
-  },[])
-    const [inputValue,setInputValue] = useState("")
-    const clearInput = ()=>{
-        setInputValue("")
-    }
-    return <div>
-        <input type="text" value={inputValue}  onChange={(e)=>{setInputValue(e.target.value)}}/>
-        <button onClick={clearInput}>子组件删除</button>
-    </div>
-}) 
-//父组件内容
-const ParentComponent = ()=>{
-    const childRef = useRef<any>(null)
-    const parentClear = ()=>{
-        childRef.current?.clearInput()
-    }
-    return  <div>
-        <ParentCallChildrenFunOrigin ref={childRef}/>
-        <button onClick={parentClear}>父组件删除</button>
-    </div>
-}
-export default ParentComponent;
-```
 
 ## 参考文章
 
