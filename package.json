@@ -13,20 +13,22 @@
   },
   "author": "zhenyulei",
   "devDependencies": {
-    "@vuepress/plugin-pwa": "^1.5.4",
-    "node-sass": "^4.13.1",
-    "patch-package": "^6.2.2",
-    "sass-loader": "^8.0.2",
-    "vuepress": "^1.5.4"
+    "@vuepress/plugin-pwa": "1.5.4",
+    "node-sass": "4.13.1",
+    "patch-package": "6.2.2",
+    "sass-loader": "8.0.2",
+    "vuepress": "1.5.4"
   },
   "dependencies": {
-    "@docsearch/css": "^1.0.0-alpha.27",
-    "@docsearch/js": "^1.0.0-alpha.27",
-    "algoliasearch": "^4.4.0",
-    "axios": "^0.19.1",
-    "intersection-observer": "^0.11.0",
-    "koa": "^2.13.1",
-    "showdown": "^1.9.1"
+    "@docsearch/css": "1.0.0-alpha.27",
+    "@docsearch/js": "1.0.0-alpha.27",
+    "algoliasearch": "4.4.0",
+    "axios": "0.19.1",
+    "intersection-observer": "0.11.0",
+    "koa": "2.13.1",
+    "showdown": "1.9.1",
+    "vue": "^2.7.14",
+    "vue-server-renderer": "^2.7.14"
   },
   "license": "ISC",
   "bugs": {
