@@ -84,6 +84,7 @@ module.exports = {
             ["SOLIDInReact", "如何在React中应用SOLID原则"],
             ["reactLife", "React生命周期"],
             ["reactRouter", "React路由"],
+            ["antd", "Ant组件库使用经验"],
           ],
         },
       ],
